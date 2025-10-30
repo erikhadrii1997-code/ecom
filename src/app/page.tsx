@@ -1,0 +1,709 @@
+'use client'
+
+import { useState } from 'react'
+import Header from '@/components/Header'
+import ProductCard from '@/components/ProductCard'
+import CartSidebar from '@/components/CartSidebar'
+import HeroSlider from '@/components/HeroSlider'
+import CategoriesSection from '@/components/CategoriesSection'
+import FeaturedProducts from '@/components/FeaturedProducts'
+import TestimonialsSection from '@/components/TestimonialsSection'
+import Footer from '@/components/Footer'
+import ProductModal from '@/components/ProductModal'
+
+// Type definitions
+interface Product {
+  id: number
+  name: string
+  price: number
+  originalPrice?: number
+  image: string
+  rating: number
+  reviews: number
+  category: string
+  badge?: string
+  discount?: number
+}
+
+interface CartItem extends Product {
+  quantity: number
+}
+
+const products = [
+  {
+    id: 1,
+    name: 'MacBook Pro 16"',
+    price: 2499,
+    originalPrice: 2999,
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop',
+    rating: 4.8,
+    reviews: 124,
+    category: 'Electronics',
+    badge: 'Best Seller',
+    discount: 17
+  },
+  {
+    id: 2,
+    name: 'iPhone 15 Pro',
+    price: 999,
+    originalPrice: 1099,
+    image: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&h=300&fit=crop',
+    rating: 4.9,
+    reviews: 89,
+    category: 'Electronics',
+    badge: 'New',
+    discount: 9
+  },
+  {
+    id: 3,
+    name: 'Sony WH-1000XM5',
+    price: 399,
+    originalPrice: 449,
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop',
+    rating: 4.7,
+    reviews: 203,
+    category: 'Electronics',
+    badge: 'Premium',
+    discount: 11
+  },
+  {
+    id: 4,
+    name: 'Nike Air Max 270',
+    price: 150,
+    originalPrice: 180,
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop',
+    rating: 4.6,
+    reviews: 156,
+    category: 'Fashion',
+    badge: 'Trending',
+    discount: 17
+  },
+  {
+    id: 5,
+    name: 'Samsung 4K TV',
+    price: 1299,
+    originalPrice: 1599,
+    image: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=300&fit=crop',
+    rating: 4.8,
+    reviews: 78,
+    category: 'Electronics',
+    badge: 'Sale',
+    discount: 19
+  },
+  {
+    id: 6,
+    name: 'Apple Watch Series 9',
+    price: 399,
+    originalPrice: 429,
+    image: 'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=400&h=300&fit=crop',
+    rating: 4.7,
+    reviews: 92,
+    category: 'Electronics',
+    badge: 'Smart',
+    discount: 7
+  },
+  {
+    id: 7,
+    name: 'Dyson V15 Vacuum',
+    price: 649,
+    originalPrice: 749,
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+    rating: 4.9,
+    reviews: 67,
+    category: 'Home',
+    badge: 'Innovation',
+    discount: 13
+  },
+  {
+    id: 8,
+    name: 'Tesla Model 3',
+    price: 45000,
+    originalPrice: 50000,
+    image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=400&h=300&fit=crop',
+    rating: 4.8,
+    reviews: 234,
+    category: 'Automotive',
+    badge: 'Eco-Friendly',
+    discount: 10
+  }
+]
+
+const categories = [
+  { name: 'Electronics', icon: '📱', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=200&h=200&fit=crop', count: 1247, color: 'bg-blue-500' },
+  { name: 'Fashion', icon: '👕', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=200&h=200&fit=crop', count: 892, color: 'bg-pink-500' },
+  { name: 'Home & Garden', icon: '🏠', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=200&fit=crop', count: 634, color: 'bg-green-500' },
+  { name: 'Sports', icon: '⚽', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop', count: 456, color: 'bg-orange-500' },
+  { name: 'Beauty', icon: '💄', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200&h=200&fit=crop', count: 789, color: 'bg-purple-500' },
+  { name: 'Books', icon: '📚', image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=200&h=200&fit=crop', count: 234, color: 'bg-yellow-500' },
+  { name: 'Toys', icon: '🧸', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop', count: 567, color: 'bg-red-500' },
+  { name: 'Automotive', icon: '🚗', image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=200&h=200&fit=crop', count: 123, color: 'bg-gray-500' }
+]
+
+const testimonials = [
+  {
+    name: 'Sarah Johnson',
+    role: 'Tech Enthusiast',
+    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+    rating: 5,
+    text: 'Amazing selection and lightning-fast delivery! The quality is outstanding and the customer service is top-notch.'
+  },
+  {
+    name: 'Mike Chen',
+    role: 'Business Owner',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+    rating: 5,
+    text: 'I\'ve been shopping here for years. The best prices, authentic products, and excellent support. Highly recommended!'
+  },
+  {
+    name: 'Emily Davis',
+    role: 'Fashion Blogger',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+    rating: 5,
+    text: 'The fashion collection is incredible! Trendy, affordable, and always in stock. My go-to store for everything!'
+  }
+]
+
+export default function Home() {
+  const [cart, setCart] = useState<CartItem[]>([])
+  const [isCartOpen, setIsCartOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [notifications, setNotifications] = useState<string[]>([])
+  const [showProductModal, setShowProductModal] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+
+  const addToCart = (product: Product) => {
+    setCart(prevCart => {
+      const existingItem = prevCart.find(item => item.id === product.id)
+      if (existingItem) {
+        return prevCart.map(item =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      }
+      return [...prevCart, { ...product, quantity: 1 }]
+    })
+    
+    // Add notification
+    setNotifications(prev => [...prev, `${product.name} added to cart!`])
+    
+    // Auto-remove notification after 3 seconds
+    setTimeout(() => {
+      setNotifications(prev => prev.slice(1))
+    }, 3000)
+  }
+
+  const removeFromCart = (productId: number) => {
+    setCart(prevCart => prevCart.filter(item => item.id !== productId))
+  }
+
+  const updateQuantity = (productId: number, quantity: number) => {
+    if (quantity <= 0) {
+      removeFromCart(productId)
+      return
+    }
+    setCart(prevCart =>
+      prevCart.map(item =>
+        item.id === productId ? { ...item, quantity } : item
+      )
+    )
+  }
+
+  const getTotalPrice = () => {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0)
+  }
+
+  // Function to show specific product
+  const showProduct = (product: Product) => {
+    setSelectedProduct(product)
+    setShowProductModal(true)
+  }
+
+  // Function to filter products by category
+  const filterProductsByCategory = (categoryName: string) => {
+    setSelectedCategory(categoryName)
+    setSearchQuery('')
+    // Scroll to featured products section
+    document.getElementById('featured-products')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  // Function to show products by brand
+  const showBrandProducts = (brandName: string) => {
+    setSelectedCategory(brandName)
+    setSearchQuery('')
+    // Scroll to featured products section
+    document.getElementById('featured-products')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const getTotalItems = () => {
+    return cart.reduce((total, item) => total + item.quantity, 0)
+  }
+
+  const filteredProducts = products.filter(product => {
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory
+    return matchesSearch && matchesCategory
+  })
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header 
+        cartCount={getTotalItems()} 
+        onCartClick={() => setIsCartOpen(true)}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+      />
+      
+      {/* Hero Slider */}
+      <HeroSlider />
+
+      {/* eBay-style Trust Indicators */}
+      <div className="bg-gray-50 py-4 sm:py-6 border-b">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 text-xs sm:text-sm">
+            <div className="flex items-center text-gray-700">
+              <svg className="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span className="font-medium">Buyer Protection</span>
+            </div>
+            <div className="flex items-center text-gray-700">
+              <svg className="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+              </svg>
+              <span className="font-medium">Free Shipping</span>
+            </div>
+            <div className="flex items-center text-gray-700">
+              <svg className="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="font-medium">24/7 Support</span>
+            </div>
+            <div className="flex items-center text-gray-700">
+              <svg className="w-5 h-5 text-orange-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="font-medium">Easy Returns</span>
+            </div>
+            <div className="flex items-center text-gray-700">
+              <svg className="w-5 h-5 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="font-medium">Secure Payment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Categories Section */}
+      <CategoriesSection 
+        categories={categories} 
+        onCategorySelect={filterProductsByCategory}
+      />
+
+      {/* Featured Products */}
+      <div id="featured-products">
+        <FeaturedProducts 
+          products={filteredProducts} 
+          onAddToCart={addToCart}
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+          onViewProduct={showProduct}
+        />
+      </div>
+
+      {/* Flash Deals Section - eBay Style */}
+      <section className="py-8 sm:py-12 bg-red-50 border-t border-red-200">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-red-600 mb-1 sm:mb-2">Flash Deals</h2>
+              <p className="text-sm sm:text-base text-gray-600">Limited time offers - Don't miss out!</p>
+            </div>
+            <div className="flex items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-lg">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="font-bold">Ends in 2h 15m</span>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {products.slice(0, 4).map((product, index) => (
+              <div key={index} className="bg-blue-50 rounded-lg border-2 border-red-200 p-4 hover:shadow-lg transition-shadow">
+                <div className="relative">
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-lg" />
+                  <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-sm font-bold">
+                    -{Math.floor(Math.random() * 50 + 20)}%
+                  </div>
+                </div>
+                <h3 className="font-semibold text-gray-900 mt-3 mb-2 line-clamp-2">{product.name}</h3>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-lg font-bold text-red-600">${(product.price * 0.7).toFixed(0)}</span>
+                    <span className="text-sm text-gray-500 line-through ml-2">${product.price}</span>
+                  </div>
+                  <button 
+                    onClick={() => addToCart(product)}
+                    className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors text-sm font-medium"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trending Categories - Foleja Style */}
+      <section className="py-8 sm:py-12 bg-white">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2">Trending Categories</h2>
+            <p className="text-sm sm:text-base text-gray-600">Shop by popular categories</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {[
+              { 
+                name: "Electronics", 
+                image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=300&h=300&fit=crop", 
+                count: 1250,
+                price: "From $29"
+              },
+              { 
+                name: "Fashion", 
+                image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=300&fit=crop", 
+                count: 890,
+                price: "From $15"
+              },
+              { 
+                name: "Home & Garden", 
+                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop", 
+                count: 650,
+                price: "From $25"
+              },
+              { 
+                name: "Sports", 
+                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop", 
+                count: 420,
+                price: "From $35"
+              },
+              { 
+                name: "Beauty", 
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&h=300&fit=crop", 
+                count: 380,
+                price: "From $12"
+              },
+              { 
+                name: "Books", 
+                image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=300&fit=crop", 
+                count: 290,
+                price: "From $8"
+              }
+            ].map((category, index) => (
+              <div key={index} className="group cursor-pointer">
+                <div className="bg-blue-50 rounded-2xl p-2 sm:p-3 text-center border border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                  {/* Background gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="w-48 h-48 sm:w-52 sm:h-52 rounded-2xl overflow-hidden mx-auto mb-2 group-hover:scale-110 transition-transform duration-300 shadow-xl border-3 border-white">
+                      <img 
+                        src={category.image} 
+                        alt={category.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="font-bold text-gray-900 mb-1 text-xs sm:text-sm group-hover:text-blue-600 transition-colors duration-200">
+                      {category.name}
+                    </h3>
+                    <p className="text-xs text-gray-600 mb-1 font-semibold">{category.count} products</p>
+                    <p className="text-xs font-bold text-green-600 mb-1">{category.price}</p>
+                    <button 
+                      onClick={() => {
+                        filterProductsByCategory(category.name);
+                        // Show notification
+                        setNotifications(prev => [...prev, `Browsing ${category.name} products`]);
+                        setTimeout(() => {
+                          setNotifications(prev => prev.slice(1));
+                        }, 3000);
+                      }}
+                      className="w-full bg-blue-600 text-white py-1 px-2 rounded-md hover:bg-blue-700 transition-all duration-200 font-bold text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
+                      Shop Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Best Sellers Section - eBay Style */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Best Sellers</h2>
+              <p className="text-gray-600">Top-rated products our customers love</p>
+            </div>
+            <button className="text-blue-600 hover:text-blue-700 font-medium">View All →</button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {products.slice(4, 8).map((product, index) => (
+              <div key={index} className="bg-blue-50 rounded-lg p-4 hover:shadow-lg transition-shadow">
+                <div className="relative">
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-lg" />
+                  <div className="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded text-sm font-bold flex items-center">
+                    {product.rating}★
+                  </div>
+                </div>
+                <h3 className="font-semibold text-gray-900 mt-3 mb-2 line-clamp-2">{product.name}</h3>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-lg font-bold text-gray-900">${product.price}</span>
+                    <div className="text-sm text-gray-500">{product.reviews} reviews</div>
+                  </div>
+                  <button 
+                    onClick={() => addToCart(product)}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-sm font-medium"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* New Arrivals Section - Foleja Style */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">New Arrivals</h2>
+            <p className="text-gray-600">Fresh products just added to our store</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {products.slice(0, 4).map((product, index) => (
+              <div key={index} className="bg-blue-50 rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow">
+                <div className="relative">
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-lg" />
+                  <div className="absolute top-2 left-2 bg-green-600 text-white px-2 py-1 rounded text-sm font-bold">
+                    NEW
+                  </div>
+                </div>
+                <h3 className="font-semibold text-gray-900 mt-3 mb-2 line-clamp-2">{product.name}</h3>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-lg font-bold text-gray-900">${product.price}</span>
+                    <div className="text-sm text-gray-500">Free shipping</div>
+                  </div>
+                  <button 
+                    onClick={() => addToCart(product)}
+                    className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors text-sm font-medium"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Daily Deals Section - eBay Style */}
+      <section className="py-12 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">Daily Deals</h2>
+            <p className="text-blue-100">Today's best offers - Limited time only!</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {products.slice(0, 3).map((product, index) => (
+              <div key={index} className="bg-blue-50 rounded-lg p-4 text-gray-900 hover:shadow-xl transition-shadow">
+                <div className="relative">
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-lg" />
+                  <div className="absolute top-2 left-2 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    DAILY DEAL
+                  </div>
+                </div>
+                <h3 className="font-semibold text-gray-900 mt-3 mb-2 line-clamp-2">{product.name}</h3>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-xl font-bold text-red-600">${(product.price * 0.6).toFixed(0)}</span>
+                    <span className="text-sm text-gray-500 line-through ml-2">${product.price}</span>
+                    <div className="text-xs text-gray-500">Save ${(product.price * 0.4).toFixed(0)}</div>
+                  </div>
+                  <button 
+                    onClick={() => addToCart(product)}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-sm font-medium"
+                  >
+                    Buy Now
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Brands Section - Foleja Style */}
+      <section className="py-8 sm:py-12 bg-gray-50">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2">Featured Brands</h2>
+            <p className="text-sm sm:text-base text-gray-600">Shop from your favorite brands</p>
+          </div>
+          
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {[
+            {
+              name: "Apple",
+              image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=300&fit=crop",
+              products: "1,250+ products",
+              price: "From $199"
+            },
+            {
+              name: "Samsung",
+              image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=300&fit=crop",
+              products: "980+ products",
+              price: "From $149"
+            },
+            {
+              name: "Nike",
+              image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop",
+              products: "750+ products",
+              price: "From $45"
+            },
+            {
+              name: "Sony",
+              image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop",
+              products: "650+ products",
+              price: "From $99"
+            },
+            {
+              name: "Adidas",
+              image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300&h=300&fit=crop",
+              products: "520+ products",
+              price: "From $35"
+            },
+            {
+              name: "LG",
+              image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=300&h=300&fit=crop",
+              products: "380+ products",
+              price: "From $299"
+            }
+          ].map((brand, index) => (
+            <div key={index} className="group cursor-pointer">
+              <div className="bg-blue-50 rounded-2xl p-2 sm:p-3 text-center border-2 border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
+                {/* Background gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                <div className="relative z-10">
+                  {/* Circular Brand Logo Container */}
+                  <div className="relative w-36 h-36 sm:w-40 sm:h-40 mx-auto mb-2">
+                    {/* Outer Circle with Gradient */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-2 group-hover:scale-110 transition-transform duration-300">
+                      {/* Inner Circle with Brand Image */}
+                      <div className="w-full h-full rounded-full overflow-hidden bg-white border-4 border-white shadow-xl">
+                        <img
+                          src={brand.image}
+                          alt={brand.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Floating Brand Badge */}
+                    <div className="absolute -top-2 -right-2 bg-gradient-to-r from-green-400 to-blue-500 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform duration-300">
+                      {brand.products.split('+')[0]}
+                    </div>
+                  </div>
+                  
+                  <h3 className="font-bold text-gray-900 text-xs sm:text-sm group-hover:text-blue-600 transition-colors duration-200 mb-1">
+                    {brand.name}
+                  </h3>
+                  <p className="text-xs text-gray-600 mb-1 font-semibold">{brand.products}</p>
+                  <p className="text-xs font-bold text-green-600 mb-1">{brand.price}</p>
+                  
+                  {/* Hover Effect Button */}
+                  <div className="mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                      Shop Now
+                    </button>
+                  </div>
+                  
+                  <button 
+                    onClick={() => {
+                      showBrandProducts(brand.name);
+                      // Show notification
+                      setNotifications(prev => [...prev, `Viewing ${brand.name} products`]);
+                      setTimeout(() => {
+                        setNotifications(prev => prev.slice(1));
+                      }, 3000);
+                    }}
+                    className="w-full bg-blue-600 text-white py-1 px-2 rounded-md hover:bg-blue-700 transition-all duration-200 font-bold text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  >
+                    View Products
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <TestimonialsSection testimonials={testimonials} />
+
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Notifications */}
+      {notifications.length > 0 && (
+        <div className="fixed top-4 right-4 z-50 space-y-2">
+          {notifications.map((notification, index) => (
+            <div
+              key={index}
+              className="bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg transform transition-all duration-300 animate-slide-in"
+            >
+              <div className="flex items-center">
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                {notification}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <CartSidebar
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        cart={cart}
+        onRemoveItem={removeFromCart}
+        onUpdateQuantity={updateQuantity}
+        totalPrice={getTotalPrice()}
+      />
+
+      {/* Product Modal */}
+      <ProductModal
+        isOpen={showProductModal}
+        onClose={() => setShowProductModal(false)}
+        product={selectedProduct}
+        onAddToCart={addToCart}
+      />
+    </div>
+  )
+}
