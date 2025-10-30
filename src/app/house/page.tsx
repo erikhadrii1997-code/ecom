@@ -2,11 +2,17 @@
 
 import { useState } from 'react'
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import ProductCard from '@/components/ProductCard'
 import CartSidebar from '@/components/CartSidebar'
+import HeroSlider from '@/components/HeroSlider'
+import CategoriesSection from '@/components/CategoriesSection'
+import FeaturedProducts from '@/components/FeaturedProducts'
+import TestimonialsSection from '@/components/TestimonialsSection'
+import Footer from '@/components/Footer'
+import ProductModal from '@/components/ProductModal'
 
-// Type definitions for house products
-interface HouseProduct {
+// Type definitions
+interface Product {
   id: number
   name: string
   price: number
@@ -15,41 +21,38 @@ interface HouseProduct {
   rating: number
   reviews: number
   category: string
-  description: string
-  brand: string
-  inStock: boolean
+  badge?: string
+  discount?: number
 }
 
-interface CartItem extends HouseProduct {
+interface CartItem extends Product {
   quantity: number
 }
 
-const houseProducts: HouseProduct[] = [
+const houseProducts = [
   {
     id: 1,
     name: 'Modern House Design 3-Bedroom',
     price: 2500,
-    originalPrice: 2800,
+    originalPrice: 2999,
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=1920,width=1920/media/4b/38/66/1755003386/Shtepi3.png',
-    rating: 4.9,
-    reviews: 45,
+    rating: 4.8,
+    reviews: 124,
     category: 'House Design',
-    description: 'Beautiful modern 3-bedroom house design with contemporary architecture.',
-    brand: 'Modern Homes',
-    inStock: true
+    badge: 'Best Seller',
+    discount: 17
   },
   {
     id: 2,
     name: 'Contemporary Garden House',
     price: 3200,
-    originalPrice: 3600,
+    originalPrice: 3599,
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=1920,width=1920/media/52/b3/8b/1755003410/Kopsht4.png',
-    rating: 4.8,
-    reviews: 38,
+    rating: 4.9,
+    reviews: 89,
     category: 'House Design',
-    description: 'Elegant contemporary house with beautiful garden integration.',
-    brand: 'Garden Homes',
-    inStock: true
+    badge: 'New',
+    discount: 11
   },
   {
     id: 3,
@@ -58,11 +61,10 @@ const houseProducts: HouseProduct[] = [
     originalPrice: 520,
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=1920,width=1920/media/c3/13/db/1755248064/KomodaSirtar11.png',
     rating: 4.7,
-    reviews: 82,
-    category: 'Storage Furniture',
-    description: 'Spacious 11-drawer cabinet perfect for bedroom or living room storage.',
-    brand: 'Hanah Home',
-    inStock: true
+    reviews: 203,
+    category: 'Storage',
+    badge: 'Premium',
+    discount: 13
   },
   {
     id: 4,
@@ -72,23 +74,21 @@ const houseProducts: HouseProduct[] = [
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/47/c9/ea/1754748799/extendable-dining-table--chairs-set-4-pieces-hanah-home-vina-1053---anthracite-white-asg-200008357-0.webp',
     rating: 4.6,
     reviews: 156,
-    category: 'Dining Furniture',
-    description: '4-piece extendable dining set in anthracite and white finish.',
-    brand: 'Hanah Home Vina',
-    inStock: true
+    category: 'Dining',
+    badge: 'Trending',
+    discount: 12
   },
   {
     id: 5,
-    name: 'Nightstand Hanah Home Kale - White',
+    name: 'Nightstand Hanah Home Kale',
     price: 89,
     originalPrice: 109,
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/5c/56/9f/1754489483/nightstand-hanah-home-kale---4922-asg-200006175-0.webp',
-    rating: 4.5,
-    reviews: 94,
-    category: 'Bedroom Furniture',
-    description: 'Elegant white nightstand with modern design and storage space.',
-    brand: 'Hanah Home',
-    inStock: true
+    rating: 4.8,
+    reviews: 78,
+    category: 'Bedroom',
+    badge: 'Sale',
+    discount: 18
   },
   {
     id: 6,
@@ -96,103 +96,68 @@ const houseProducts: HouseProduct[] = [
     price: 95,
     originalPrice: 119,
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/c4/28/7a/1754514355/nightstand-hanah-home-elina---8170-asg-200006166-0.webp',
-    rating: 4.6,
-    reviews: 73,
-    category: 'Bedroom Furniture',
-    description: 'Stylish Elina nightstand with premium finish and functional design.',
-    brand: 'Hanah Home',
-    inStock: true
+    rating: 4.7,
+    reviews: 92,
+    category: 'Bedroom',
+    badge: 'Smart',
+    discount: 20
   },
   {
     id: 7,
-    name: 'Multi-Purpose Cabinet Grano 140 - Caucasian Oak',
+    name: 'Multi-Purpose Cabinet Grano - Oak',
     price: 320,
     originalPrice: 380,
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/7b/a8/9e/1754567102/multi-purpose-cabinet-hanah-home-grano-140---caucasian-oak-asg-200004022-0.webp',
-    rating: 4.8,
+    rating: 4.9,
     reviews: 67,
-    category: 'Storage Furniture',
-    description: 'Versatile cabinet in beautiful Caucasian Oak finish for any room.',
-    brand: 'Hanah Home',
-    inStock: true
+    category: 'Storage',
+    badge: 'Innovation',
+    discount: 16
   },
   {
     id: 8,
-    name: 'Multi-Purpose Cabinet Grano 140 - Anthracite',
-    price: 320,
-    originalPrice: 380,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/e7/77/94/1754561908/multi-purpose-cabinet-hanah-home-grano-140---anthracite-asg-200004021-0.webp',
-    rating: 4.8,
-    reviews: 71,
-    category: 'Storage Furniture',
-    description: 'Modern cabinet in sleek anthracite finish with ample storage space.',
-    brand: 'Hanah Home',
-    inStock: true
-  },
-  {
-    id: 9,
-    name: 'Living Room Furniture Set Best - Walnut',
+    name: 'Living Room Set Best - Walnut',
     price: 1250,
     originalPrice: 1450,
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/7b/bd/cc/1754466162/living-room-furniture-set-hanah-home-best---walnut-asg-200005422-0.webp',
-    rating: 4.9,
-    reviews: 123,
-    category: 'Living Room',
-    description: 'Complete living room set in elegant walnut finish with modern styling.',
-    brand: 'Hanah Home',
-    inStock: true
-  },
-  {
-    id: 10,
-    name: 'Living Room Furniture Set Luxe - White Gold',
-    price: 1380,
-    originalPrice: 1580,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/6a/e5/22/1754764225/living-room-furniture-set-hanah-home-luxe-set---white-gold-asg-200002900-0.webp',
-    rating: 4.9,
-    reviews: 98,
-    category: 'Living Room',
-    description: 'Luxurious living room set with white and gold accents for premium styling.',
-    brand: 'Hanah Home',
-    inStock: true
-  },
-  {
-    id: 11,
-    name: 'Living Room Furniture Set Luxe - Walnut Gold',
-    price: 1380,
-    originalPrice: 1580,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/76/5b/12/1754469562/living-room-furniture-set-hanah-home-luxe-set---walnut-gold-asg-200002898-0.webp',
     rating: 4.8,
-    reviews: 87,
+    reviews: 234,
     category: 'Living Room',
-    description: 'Premium walnut and gold living room set with sophisticated design.',
-    brand: 'Hanah Home',
-    inStock: true
+    badge: 'Eco-Friendly',
+    discount: 14
+  }
+]
+
+const categories = [
+  { name: 'House Design', icon: '🏠', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=1920,width=1920/media/4b/38/66/1755003386/Shtepi3.png', count: 247, color: 'bg-blue-500' },
+  { name: 'Living Room', icon: '🛋️', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/7b/bd/cc/1754466162/living-room-furniture-set-hanah-home-best---walnut-asg-200005422-0.webp', count: 189, color: 'bg-pink-500' },
+  { name: 'Bedroom', icon: '🛏️', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/5c/56/9f/1754489483/nightstand-hanah-home-kale---4922-asg-200006175-0.webp', count: 156, color: 'bg-green-500' },
+  { name: 'Dining', icon: '🍽️', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/47/c9/ea/1754748799/extendable-dining-table--chairs-set-4-pieces-hanah-home-vina-1053---anthracite-white-asg-200008357-0.webp', count: 98, color: 'bg-orange-500' },
+  { name: 'Storage', icon: '📦', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/7b/a8/9e/1754567102/multi-purpose-cabinet-hanah-home-grano-140---caucasian-oak-asg-200004022-0.webp', count: 134, color: 'bg-purple-500' },
+  { name: 'Kitchen', icon: '🍳', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=200&fit=crop', count: 87, color: 'bg-yellow-500' }
+]
+
+const testimonials = [
+  {
+    name: 'Maria Gonzalez',
+    role: 'Home Designer',
+    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
+    rating: 5,
+    text: 'Incredible furniture quality! The house designs are stunning and the furniture pieces are exactly what I needed for my projects.'
   },
   {
-    id: 12,
-    name: 'Living Room Furniture Set Valentina - White Sapphire',
-    price: 1150,
-    originalPrice: 1350,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/20/1e/b6/1754494343/living-room-furniture-set-hanah-home-valentina---white-sapphire-asg-200005698-0.webp',
-    rating: 4.7,
-    reviews: 112,
-    category: 'Living Room',
-    description: 'Elegant Valentina set in white sapphire finish with contemporary appeal.',
-    brand: 'Hanah Home',
-    inStock: true
+    name: 'John Smith',
+    role: 'Homeowner',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
+    rating: 5,
+    text: 'Amazing selection of house products. The living room set transformed our entire home. Excellent quality and fast delivery!'
   },
   {
-    id: 13,
-    name: 'Living Room Furniture Set Istanbul - Walnut Anthracite',
-    price: 1200,
-    originalPrice: 1400,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/9d/fa/6c/1754659627/living-room-furniture-set-hanah-home-istanbul---walnut-anthracite-asg-200005487-0.webp',
-    rating: 4.8,
-    reviews: 95,
-    category: 'Living Room',
-    description: 'Istanbul collection in walnut anthracite with modern European styling.',
-    brand: 'Hanah Home',
-    inStock: true
+    name: 'Emma Wilson',
+    role: 'Interior Decorator',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+    rating: 5,
+    text: 'The house designs and furniture collection is exceptional! Perfect for modern homes. My clients absolutely love them!'
   }
 ]
 
@@ -202,8 +167,10 @@ export default function HousePage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [notifications, setNotifications] = useState<string[]>([])
+  const [showProductModal, setShowProductModal] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
-  const addToCart = (product: HouseProduct) => {
+  const addToCart = (product: Product) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id)
       if (existingItem) {
@@ -245,15 +212,34 @@ export default function HousePage() {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0)
   }
 
+  // Function to show specific product
+  const showProduct = (product: Product) => {
+    setSelectedProduct(product)
+    setShowProductModal(true)
+  }
+
+  // Function to filter products by category
+  const filterProductsByCategory = (categoryName: string) => {
+    setSelectedCategory(categoryName)
+    setSearchQuery('')
+    // Scroll to featured products section
+    document.getElementById('featured-products')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  // Function to show products by brand
+  const showBrandProducts = (brandName: string) => {
+    setSelectedCategory(brandName)
+    setSearchQuery('')
+    // Scroll to featured products section
+    document.getElementById('featured-products')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   const getTotalItems = () => {
     return cart.reduce((total, item) => total + item.quantity, 0)
   }
 
-  const categories = ['All', 'House Design', 'Living Room', 'Bedroom Furniture', 'Dining Furniture', 'Storage Furniture']
-
   const filteredProducts = houseProducts.filter(product => {
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         product.brand.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory
     return matchesSearch && matchesCategory
   })
@@ -266,134 +252,155 @@ export default function HousePage() {
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
       />
+      
+      {/* Hero Slider */}
+      <HeroSlider />
 
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">🏠 House Products</h1>
-          <p className="text-xl md:text-2xl mb-8">Transform Your Home with Premium Furniture & Design</p>
-          <div className="flex justify-center space-x-4 text-sm md:text-base">
-            <div className="flex items-center">
-              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+      {/* eBay-style Trust Indicators */}
+      <div className="bg-gray-50 py-4 sm:py-6 border-b">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 text-xs sm:text-sm">
+            <div className="flex items-center text-gray-700">
+              <svg className="w-5 h-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              Free Delivery
+              <span className="font-medium">Quality Guarantee</span>
             </div>
-            <div className="flex items-center">
-              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+            <div className="flex items-center text-gray-700">
+              <svg className="w-5 h-5 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
               </svg>
-              Premium Quality
+              <span className="font-medium">Free Assembly</span>
             </div>
-            <div className="flex items-center">
-              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+            <div className="flex items-center text-gray-700">
+              <svg className="w-5 h-5 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              Expert Support
+              <span className="font-medium">Home Delivery</span>
+            </div>
+            <div className="flex items-center text-gray-700">
+              <svg className="w-5 h-5 text-orange-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="font-medium">Easy Returns</span>
+            </div>
+            <div className="flex items-center text-gray-700">
+              <svg className="w-5 h-5 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="font-medium">Secure Payment</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Category Filter */}
-      <div className="bg-white py-6 border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full font-medium transition-colors ${
-                  selectedCategory === category
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
+      {/* Categories Section */}
+      <CategoriesSection 
+        categories={categories} 
+        onCategorySelect={filterProductsByCategory}
+      />
+
+      {/* Featured Products */}
+      <div id="featured-products">
+        <FeaturedProducts 
+          products={filteredProducts} 
+          onAddToCart={addToCart}
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+          onViewProduct={showProduct}
+        />
       </div>
 
-      {/* Products Grid */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">
-            {selectedCategory === 'All' ? 'All House Products' : selectedCategory}
-          </h2>
-          <p className="text-gray-600">{filteredProducts.length} products found</p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
-            <div key={product.id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <div className="relative">
-                <img 
-                  src={product.image} 
-                  alt={product.name}
-                  className="w-full h-64 object-cover"
-                />
-                {product.originalPrice && (
-                  <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-sm font-bold">
-                    -{Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+      {/* Flash Deals Section - House Style */}
+      <section className="py-8 sm:py-12 bg-red-50 border-t border-red-200">
+        <div className="container mx-auto px-2 sm:px-4">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-red-600 mb-1 sm:mb-2">🏠 House Flash Deals</h2>
+              <p className="text-sm sm:text-base text-gray-600">Limited time offers on house products!</p>
+            </div>
+            <div className="flex items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-lg">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="font-bold">Ends in 6h 30m</span>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {houseProducts.slice(0, 4).map((product, index) => (
+              <div key={index} className="bg-blue-50 rounded-lg border-2 border-red-200 p-4 hover:shadow-lg transition-shadow">
+                <div className="relative">
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-lg" />
+                  <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-sm font-bold">
+                    -{product.discount}%
                   </div>
-                )}
-                <div className="absolute top-2 right-2 bg-white bg-opacity-90 px-2 py-1 rounded text-sm">
-                  ⭐ {product.rating}
                 </div>
-              </div>
-              
-              <div className="p-4">
-                <div className="text-sm text-blue-600 font-medium mb-1">{product.brand}</div>
-                <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 h-12">{product.name}</h3>
-                <p className="text-sm text-gray-600 mb-3 line-clamp-2">{product.description}</p>
-                
-                <div className="flex items-center mb-3">
-                  <div className="flex text-yellow-400 text-sm">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i}>{i < Math.floor(product.rating) ? '★' : '☆'}</span>
-                    ))}
-                  </div>
-                  <span className="text-sm text-gray-500 ml-2">({product.reviews} reviews)</span>
-                </div>
-
-                <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-gray-900 mt-3 mb-2 line-clamp-2">{product.name}</h3>
+                <div className="flex items-center justify-between">
                   <div>
-                    <span className="text-xl font-bold text-gray-900">${product.price}</span>
+                    <span className="text-lg font-bold text-red-600">${product.price}</span>
                     {product.originalPrice && (
                       <span className="text-sm text-gray-500 line-through ml-2">${product.originalPrice}</span>
                     )}
                   </div>
-                  <span className={`text-sm px-2 py-1 rounded ${product.inStock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-                    {product.inStock ? 'In Stock' : 'Out of Stock'}
-                  </span>
+                  <button 
+                    onClick={() => addToCart(product)}
+                    className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors text-sm font-medium"
+                  >
+                    Add to Cart
+                  </button>
                 </div>
-
-                <button 
-                  onClick={() => addToCart(product)}
-                  disabled={!product.inStock}
-                  className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${
-                    product.inStock
-                      ? 'bg-blue-600 text-white hover:bg-blue-700'
-                      : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  }`}
-                >
-                  {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-                </button>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {filteredProducts.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-gray-400 text-6xl mb-4">🏠</div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No products found</h3>
-            <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+            ))}
           </div>
-        )}
-      </div>
+        </div>
+      </section>
+
+      {/* Best Sellers Section - House Style */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">🏆 Best House Products</h2>
+              <p className="text-gray-600">Top-rated house products our customers love</p>
+            </div>
+            <button className="text-blue-600 hover:text-blue-700 font-medium">View All →</button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {houseProducts.slice(4, 8).map((product, index) => (
+              <div key={index} className="bg-blue-50 rounded-lg p-4 hover:shadow-lg transition-shadow">
+                <div className="relative">
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-lg" />
+                  <div className="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded text-sm font-bold flex items-center">
+                    {product.rating}★
+                  </div>
+                </div>
+                <h3 className="font-semibold text-gray-900 mt-3 mb-2 line-clamp-2">{product.name}</h3>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-lg font-bold text-gray-900">${product.price}</span>
+                    <div className="text-sm text-gray-500">{product.reviews} reviews</div>
+                  </div>
+                  <button 
+                    onClick={() => addToCart(product)}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors text-sm font-medium"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <TestimonialsSection testimonials={testimonials} />
+
+      {/* Footer */}
+      <Footer />
 
       {/* Notifications */}
       {notifications.length > 0 && (
@@ -401,7 +408,7 @@ export default function HousePage() {
           {notifications.map((notification, index) => (
             <div
               key={index}
-              className="bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg transform transition-all duration-300"
+              className="bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg transform transition-all duration-300 animate-slide-in"
             >
               <div className="flex items-center">
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -423,7 +430,12 @@ export default function HousePage() {
         totalPrice={getTotalPrice()}
       />
 
-      <Footer />
+      <ProductModal
+        isOpen={showProductModal}
+        onClose={() => setShowProductModal(false)}
+        product={selectedProduct}
+        onAddToCart={addToCart}
+      />
     </div>
   )
 }
