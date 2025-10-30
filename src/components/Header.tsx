@@ -33,10 +33,14 @@ export default function Header({ cartCount, onCartClick, searchQuery, onSearchCh
           </div>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             <a href="/" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Home</a>
             <a href="/products" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Products</a>
+            <a href="/clothing" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Clothing</a>
+            <a href="/cosmetics" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Cosmetics</a>
+            <a href="/sport" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Sport</a>
             <a href="/house" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">House</a>
+            <a href="/teknologji" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Tech</a>
           </nav>
 
           {/* Search Bar */}
@@ -98,8 +102,11 @@ export default function Header({ cartCount, onCartClick, searchQuery, onSearchCh
             <div className="flex flex-col space-y-4">
               <a href="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
               <a href="/products" className="text-gray-700 hover:text-blue-600 transition-colors">Products</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">About</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+              <a href="/clothing" className="text-gray-700 hover:text-blue-600 transition-colors">Clothing</a>
+              <a href="/cosmetics" className="text-gray-700 hover:text-blue-600 transition-colors">Cosmetics</a>
+              <a href="/sport" className="text-gray-700 hover:text-blue-600 transition-colors">Sport</a>
+              <a href="/house" className="text-gray-700 hover:text-blue-600 transition-colors">House</a>
+              <a href="/teknologji" className="text-gray-700 hover:text-blue-600 transition-colors">Tech</a>
             </div>
           </div>
         )}

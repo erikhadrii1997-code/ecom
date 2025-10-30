@@ -6,6 +6,7 @@ import ProductCard from '@/components/ProductCard'
 import CartSidebar from '@/components/CartSidebar'
 import ProductModal from '@/components/ProductModal'
 import Footer from '@/components/Footer'
+import HeroSlider from '@/components/HeroSlider'
 
 interface Product {
   id: number
@@ -25,6 +26,10 @@ interface Product {
   seller?: string
   location?: string
   timeLeft?: string
+}
+
+interface CartItem extends Product {
+  quantity: number
 }
 
 const products: Product[] = [
@@ -183,12 +188,12 @@ const products: Product[] = [
 ]
 
 const categories = [
-  { name: 'Electronics', count: 1250, image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=300&h=200&fit=crop' },
-  { name: 'Fashion', count: 890, image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop' },
-  { name: 'Home & Garden', count: 650, image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop' },
-  { name: 'Sports', count: 420, image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop' },
-  { name: 'Beauty', count: 380, image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&h=200&fit=crop' },
-  { name: 'Books', count: 290, image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=200&fit=crop' }
+  { name: 'Electronics', icon: '📱', count: 1250, color: 'bg-blue-500', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=300&h=200&fit=crop' },
+  { name: 'Fashion', icon: '👕', count: 890, color: 'bg-pink-500', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop' },
+  { name: 'Home & Garden', icon: '🏠', count: 650, color: 'bg-green-500', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop' },
+  { name: 'Sports', icon: '⚽', count: 420, color: 'bg-orange-500', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop' },
+  { name: 'Beauty', icon: '💄', count: 380, color: 'bg-purple-500', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&h=200&fit=crop' },
+  { name: 'Books', icon: '📚', count: 290, color: 'bg-yellow-500', image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=200&fit=crop' }
 ]
 
 const brands = [
@@ -200,8 +205,57 @@ const brands = [
   { name: 'LG', count: 95, image: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=200&h=200&fit=crop' }
 ]
 
+// Products-specific slider using product images
+const productsSlides = [
+  {
+    id: 1,
+    title: 'Premium Apple Products',
+    subtitle: 'Innovation at its finest',
+    description: 'MacBook Pro M3 Max and iPhone 15 Pro - Professional tools for creators',
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&h=600&fit=crop&crop=center&q=80',
+    buttonText: 'Shop Apple',
+    buttonLink: '#apple'
+  },
+  {
+    id: 2,
+    title: 'Samsung Galaxy Collection',
+    subtitle: 'Android excellence',
+    description: 'Galaxy S24 Ultra with S Pen - Power and productivity combined',
+    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&h=600&fit=crop&crop=center&q=80',
+    buttonText: 'Shop Samsung',
+    buttonLink: '#samsung'
+  },
+  {
+    id: 3,
+    title: 'Professional Audio',
+    subtitle: 'Sony sound perfection',
+    description: 'WH-1000XM5 Noise Canceling Headphones - Immersive audio experience',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&h=600&fit=crop&crop=center&q=80',
+    buttonText: 'Shop Audio',
+    buttonLink: '#audio'
+  },
+  {
+    id: 4,
+    title: 'Gaming & Entertainment',
+    subtitle: 'Level up your experience',
+    description: 'Premium gaming gear and entertainment systems for enthusiasts',
+    image: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=1200&h=600&fit=crop&crop=center&q=80',
+    buttonText: 'Shop Gaming',
+    buttonLink: '#gaming'
+  },
+  {
+    id: 5,
+    title: 'Smart Home Technology',
+    subtitle: 'Connected living',
+    description: 'Transform your home with smart devices and IoT solutions',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop&crop=center&q=80',
+    buttonText: 'Shop Smart Home',
+    buttonLink: '#smarthome'
+  }
+]
+
 export default function ProductsPage() {
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState<CartItem[]>([])
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -211,10 +265,10 @@ export default function ProductsPage() {
   const [viewMode, setViewMode] = useState('grid')
   const [notifications, setNotifications] = useState<string[]>([])
   const [showProductModal, setShowProductModal] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState(null)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [showFilters, setShowFilters] = useState(false)
 
-  const addToCart = (product) => {
+  const addToCart = (product: Product) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id)
       if (existingItem) {
@@ -233,11 +287,11 @@ export default function ProductsPage() {
     }, 3000)
   }
 
-  const removeFromCart = (productId) => {
+  const removeFromCart = (productId: number) => {
     setCart(prevCart => prevCart.filter(item => item.id !== productId))
   }
 
-  const updateQuantity = (productId, quantity) => {
+  const updateQuantity = (productId: number, quantity: number) => {
     if (quantity <= 0) {
       removeFromCart(productId)
       return
@@ -253,17 +307,17 @@ export default function ProductsPage() {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0)
   }
 
-  const showProduct = (product) => {
+  const showProduct = (product: Product) => {
     setSelectedProduct(product)
     setShowProductModal(true)
   }
 
-  const filterProductsByCategory = (categoryName) => {
+  const filterProductsByCategory = (categoryName: string) => {
     setSelectedCategory(categoryName)
     setSearchQuery('')
   }
 
-  const filterProductsByBrand = (brandName) => {
+  const filterProductsByBrand = (brandName: string) => {
     setSelectedBrand(brandName)
     setSearchQuery('')
   }
@@ -303,39 +357,8 @@ export default function ProductsPage() {
         onSearchChange={setSearchQuery}
       />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12 sm:py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              Discover Amazing Products
-            </h1>
-            <p className="text-lg sm:text-xl mb-8 text-blue-100">
-              Shop from thousands of products with the best deals and fastest shipping
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <div className="flex items-center bg-white/20 rounded-lg px-4 py-2">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm font-medium">Free Shipping</span>
-              </div>
-              <div className="flex items-center bg-white/20 rounded-lg px-4 py-2">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm font-medium">Secure Payment</span>
-              </div>
-              <div className="flex items-center bg-white/20 rounded-lg px-4 py-2">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm font-medium">Easy Returns</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Slider */}
+      <HeroSlider slides={productsSlides} />
 
       {/* Categories Section */}
       <section className="py-8 sm:py-12 bg-white">

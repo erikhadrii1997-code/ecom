@@ -1,13 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
 import ProductCard from '@/components/ProductCard'
 import CartSidebar from '@/components/CartSidebar'
 import HeroSlider from '@/components/HeroSlider'
 import CategoriesSection from '@/components/CategoriesSection'
 import FeaturedProducts from '@/components/FeaturedProducts'
-import TestimonialsSection from '@/components/TestimonialsSection'
+
 import Footer from '@/components/Footer'
 import ProductModal from '@/components/ProductModal'
 
@@ -125,6 +125,103 @@ const houseProducts = [
     category: 'Living Room',
     badge: 'Eco-Friendly',
     discount: 14
+  },
+  {
+    id: 9,
+    name: 'Premium Home Fragrance Collection',
+    price: 85,
+    originalPrice: 105,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/21/8a/98/1754665479/twilly-dhermes-eau-de-perfume-spray-30ml-bts-200003821-0.webp',
+    rating: 4.8,
+    reviews: 145,
+    category: 'Decor',
+    badge: 'Luxury',
+    discount: 19
+  },
+  {
+    id: 10,
+    name: 'Designer Table Accessories Set',
+    price: 125,
+    originalPrice: 149,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/bb/dd/b0/1755100442/q-by-dolce--gabbana-intense-eau-de-parfum-spray-100ml-pvp-200034993-0.webp',
+    rating: 4.7,
+    reviews: 89,
+    category: 'Decor',
+    badge: 'Designer',
+    discount: 16
+  },
+  {
+    id: 11,
+    name: 'Modern Kitchen Essentials',
+    price: 55,
+    originalPrice: 75,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/f7/93/a2/1754665908/tommy-hilfiger-tommy-hil-impact-together-etv-100ml-bts-200029959-0.webp',
+    rating: 4.5,
+    reviews: 123,
+    category: 'Kitchen',
+    badge: 'Essential',
+    discount: 27
+  },
+  {
+    id: 12,
+    name: 'Bathroom Luxury Set',
+    price: 95,
+    originalPrice: 119,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/a7/09/d6/1754296357/eau-de-parfum-carolina-herrera-good-girl--50-ml-rev-200008681-0.webp',
+    rating: 4.6,
+    reviews: 167,
+    category: 'Bathroom',
+    badge: 'Premium',
+    discount: 20
+  }
+]
+
+// House-specific slider using product images
+const houseSlides = [
+  {
+    id: 1,
+    title: 'Modern House Designs',
+    subtitle: 'Contemporary living spaces',
+    description: 'Discover stunning 3-bedroom modern house designs with premium finishes',
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=600,width=1200/media/4b/38/66/1755003386/Shtepi3.png',
+    buttonText: 'View Houses',
+    buttonLink: '#houses'
+  },
+  {
+    id: 2,
+    title: 'Garden Houses Collection',
+    subtitle: 'Outdoor living redefined',
+    description: 'Contemporary garden houses perfect for relaxation and entertainment',
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=600,width=1200/media/52/b3/8b/1755003410/Kopsht4.png',
+    buttonText: 'Shop Garden',
+    buttonLink: '#garden'
+  },
+  {
+    id: 3,
+    title: 'Premium Storage Solutions',
+    subtitle: 'Organize in style',
+    description: 'Komoda storage cabinets and multi-purpose furniture for every room',
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=600,width=1200/media/c3/13/db/1755248064/KomodaSirtar11.png',
+    buttonText: 'Shop Storage',
+    buttonLink: '#storage'
+  },
+  {
+    id: 4,
+    title: 'Living Room Elegance',
+    subtitle: 'Comfort meets luxury',
+    description: 'Premium living room furniture sets in beautiful walnut finishes',
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=600,width=1200/media/7b/bd/cc/1754466162/living-room-furniture-set-hanah-home-best---walnut-asg-200005422-0.webp',
+    buttonText: 'Shop Living Room',
+    buttonLink: '#living'
+  },
+  {
+    id: 5,
+    title: 'Dining Room Essentials',
+    subtitle: 'Gather in style',
+    description: 'Extendable dining tables and chair sets perfect for family gatherings',
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=600,width=1200/media/47/c9/ea/1754748799/extendable-dining-table--chairs-set-4-pieces-hanah-home-vina-1053---anthracite-white-asg-200008357-0.webp',
+    buttonText: 'Shop Dining',
+    buttonLink: '#dining'
   }
 ]
 
@@ -169,6 +266,27 @@ export default function HousePage() {
   const [notifications, setNotifications] = useState<string[]>([])
   const [showProductModal, setShowProductModal] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+
+  // Load cart from localStorage on component mount
+  useEffect(() => {
+    try {
+      const savedCart = localStorage.getItem('cart')
+      if (savedCart) {
+        setCart(JSON.parse(savedCart))
+      }
+    } catch (error) {
+      console.error('Error loading cart:', error)
+    }
+  }, [])
+
+  // Save cart to localStorage whenever cart changes
+  useEffect(() => {
+    try {
+      localStorage.setItem('cart', JSON.stringify(cart))
+    } catch (error) {
+      console.error('Error saving cart:', error)
+    }
+  }, [cart])
 
   const addToCart = (product: Product) => {
     setCart(prevCart => {
@@ -254,7 +372,7 @@ export default function HousePage() {
       />
       
       {/* Hero Slider */}
-      <HeroSlider />
+      <HeroSlider slides={houseSlides} />
 
       {/* eBay-style Trust Indicators */}
       <div className="bg-gray-50 py-4 sm:py-6 border-b">
@@ -395,9 +513,6 @@ export default function HousePage() {
           </div>
         </div>
       </section>
-
-      {/* Testimonials */}
-      <TestimonialsSection testimonials={testimonials} />
 
       {/* Footer */}
       <Footer />

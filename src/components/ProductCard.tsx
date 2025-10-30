@@ -31,22 +31,20 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }: Pro
   }
 
   return (
-    <div className="bg-blue-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border-2 border-blue-200 hover:border-blue-400 transform hover:-translate-y-1">
+    <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-200 hover:border-blue-400 transform hover:-translate-y-2">
       <div className="relative">
-        {/* Circular Image Container with Gradient Background */}
-        <div className="relative w-full h-48 sm:h-52 lg:h-56 flex items-center justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
-          {/* Main Circular Image */}
-          <div className="w-36 h-36 sm:w-40 sm:h-40 lg:w-44 lg:h-44 rounded-full overflow-hidden shadow-xl border-3 border-white group-hover:scale-110 transition-transform duration-500">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
+        {/* Rectangular Image Container */}
+        <div className="relative w-full h-48 sm:h-52 lg:h-56 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+          {/* Main Rectangular Image */}
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
           
-          {/* Badge - Positioned on the circular image */}
+          {/* Badge - Positioned on top of image */}
           {product.badge && (
-            <div className="absolute top-2 left-2 bg-gradient-to-r from-red-500 to-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg">
+            <div className="absolute top-3 left-3 bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow-lg">
               {product.badge}
             </div>
           )}

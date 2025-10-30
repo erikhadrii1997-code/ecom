@@ -2,7 +2,21 @@
 
 import { useState, useEffect } from 'react'
 
-const slides = [
+interface Slide {
+  id: number
+  title: string
+  subtitle: string
+  description: string
+  image: string
+  buttonText: string
+  buttonLink: string
+}
+
+interface HeroSliderProps {
+  slides?: Slide[]
+}
+
+const defaultSlides = [
   {
     id: 1,
     title: 'Premium Technology Collection',
@@ -77,7 +91,7 @@ const slides = [
   }
 ]
 
-export default function HeroSlider() {
+export default function HeroSlider({ slides = defaultSlides }: HeroSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
 

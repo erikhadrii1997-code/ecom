@@ -113,7 +113,13 @@ export default function CartSidebar({
                 <span className="text-lg font-semibold text-gray-900">Total:</span>
                 <span className="text-2xl font-bold text-blue-600">${totalPrice.toLocaleString()}</span>
               </div>
-              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+              <button 
+                onClick={() => {
+                  // Navigate to internal checkout page
+                  window.location.href = '/checkout';
+                }}
+                className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              >
                 Proceed to Checkout
               </button>
             </div>
