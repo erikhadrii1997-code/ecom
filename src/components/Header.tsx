@@ -36,8 +36,7 @@ export default function Header({ cartCount, onCartClick, searchQuery, onSearchCh
           <nav className="hidden md:flex items-center space-x-8">
             <a href="/" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Home</a>
             <a href="/products" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Products</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">About</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Contact</a>
+            <a href="/house" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">House</a>
           </nav>
 
           {/* Search Bar */}
