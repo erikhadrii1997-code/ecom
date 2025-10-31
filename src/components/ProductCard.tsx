@@ -31,10 +31,10 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }: Pro
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-200 hover:border-blue-400 transform hover:-translate-y-1">
+  <div className="bg-blue-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-blue-200 hover:border-blue-400 transform hover:-translate-y-1">
       <div className="relative">
         {/* Rectangular Image Container - Much Larger for Focus */}
-        <div className="relative w-full h-40 sm:h-44 lg:h-48 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+  <div className="relative w-full h-40 sm:h-44 lg:h-48 bg-blue-200 overflow-hidden">
           {/* Main Rectangular Image */}
           <img
             src={product.image}
@@ -107,7 +107,7 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }: Pro
           )}
         </div>
         
-        <div className="flex gap-2">
+  <div className="flex gap-2 flex-wrap min-w-0">
           <button
             onClick={onAddToCart}
             className="flex-1 bg-blue-600 text-white py-1 px-2 rounded-md hover:bg-blue-700 transition-all duration-300 font-bold text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"

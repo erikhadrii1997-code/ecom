@@ -20,19 +20,55 @@ interface HeroSliderProps {
 const defaultSlides = [
   {
     id: 1,
-    title: 'Premium Technology Collection',
+    title: 'Cutting-Edge Laptop',
     subtitle: '',
     description: '',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200&h=600&fit=crop',
     buttonText: '',
     buttonLink: ''
   },
   {
     id: 2,
-    title: 'Luxury Bags for Women',
+    title: 'Elegant Cosmetics',
     subtitle: '',
     description: '',
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1200&h=600&fit=crop',
+    buttonText: '',
+    buttonLink: ''
+  },
+  {
+    id: 3,
+    title: 'Sport Shoes Collection',
+    subtitle: '',
+    description: '',
+    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&h=600&fit=crop',
+    buttonText: '',
+    buttonLink: ''
+  },
+  {
+    id: 4,
+    title: 'Modern Home Decor',
+    subtitle: '',
+    description: '',
+    image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=1200&h=600&fit=crop',
+    buttonText: '',
+    buttonLink: ''
+  },
+  {
+    id: 5,
+    title: 'Fashion Trends',
+    subtitle: '',
+    description: '',
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1200&h=600&fit=crop',
+    buttonText: '',
+    buttonLink: ''
+  },
+  {
+    id: 6,
+    title: 'Luxury Bags',
+    subtitle: '',
+    description: '',
+    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1200&h=600&fit=crop', // Girl with luxury bag
     buttonText: '',
     buttonLink: ''
   }
@@ -46,7 +82,7 @@ export default function HeroSlider({ slides = defaultSlides }: HeroSliderProps) 
     if (isPaused) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 1800); // 1.8 seconds
     return () => clearInterval(timer);
   }, [isPaused, slides.length]);
 

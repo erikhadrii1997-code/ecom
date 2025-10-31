@@ -1,4 +1,7 @@
+
 'use client'
+// ...existing code...
+// Set main background and sections to solid gray colors
 
 import { useState, useEffect } from 'react'
 import Header from '@/components/Header'

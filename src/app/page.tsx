@@ -518,7 +518,7 @@ export default function Home() {
   })
 
   return (
-    <div className="min-h-screen bg-gray-50">
+  <div className="min-h-screen bg-gray-100">
       <Header 
         cartCount={getTotalItems()} 
         onCartClick={() => setIsCartOpen(true)}
@@ -660,57 +660,24 @@ export default function Home() {
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2">Trending Categories</h2>
             <p className="text-sm sm:text-base text-gray-600">Shop by popular categories</p>
           </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {[
-              { 
-                name: "Electronics", 
-                image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=300&h=300&fit=crop", 
-                count: 1250,
-                price: "From $29"
-              },
-              { 
-                name: "Fashion", 
-                image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=300&fit=crop", 
-                count: 890,
-                price: "From $15"
-              },
-              { 
-                name: "Home & Garden", 
-                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop", 
-                count: 650,
-                price: "From $25"
-              },
-              { 
-                name: "Sports", 
-                image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop", 
-                count: 420,
-                price: "From $35"
-              },
-              { 
-                name: "Beauty", 
-                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=300&h=300&fit=crop", 
-                count: 380,
-                price: "From $12"
-              },
-              { 
-                name: "Books", 
-                image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=300&fit=crop", 
-                count: 290,
-                price: "From $8"
-              }
+              { name: "Electronics", image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&h=400&fit=crop", count: 1250, price: "From $29" },
+              { name: "Fashion", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=400&fit=crop", count: 890, price: "From $15" },
+              { name: "Home & Garden", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop", count: 650, price: "From $25" },
+              { name: "Sports", image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop", count: 420, price: "From $35" },
+              { name: "Beauty", image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop", count: 380, price: "From $12" },
+              { name: "Books", image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=400&fit=crop", count: 290, price: "From $8" }
             ].map((category, index) => (
               <div key={index} className="group cursor-pointer">
-                <div className="bg-blue-50 rounded-2xl p-2 sm:p-3 text-center border border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all duration-300 relative overflow-hidden">
-                  {/* Background gradient overlay */}
+                <div className="bg-blue-50 rounded-xl p-2 sm:p-3 text-center border border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col items-center justify-between min-h-64 sm:min-h-72 md:min-h-80 h-auto">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  <div className="relative z-10">
-                    <div className="w-48 h-48 sm:w-52 sm:h-52 rounded-2xl overflow-hidden mx-auto mb-2 group-hover:scale-110 transition-transform duration-300 shadow-xl border-3 border-white">
+                  <div className="relative z-10 flex flex-col items-center justify-between h-full">
+                    <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden mx-auto mb-2 group-hover:scale-105 transition-transform duration-300 shadow-xl border-3 border-white">
                       <img 
                         src={category.image} 
                         alt={category.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover rounded-xl"
                       />
                     </div>
                     <h3 className="font-bold text-gray-900 mb-1 text-xs sm:text-sm group-hover:text-blue-600 transition-colors duration-200">
@@ -720,16 +687,11 @@ export default function Home() {
                     <p className="text-xs font-bold text-green-600 mb-1">{category.price}</p>
                     <button 
                       onClick={() => {
-                        filterProductsByCategory(category.name);
-                        // Show notification
-                        setNotifications(prev => [...prev, `Browsing ${category.name} products`]);
-                        setTimeout(() => {
-                          setNotifications(prev => prev.slice(1));
-                        }, 3000);
+                        window.location.href = `/products?category=${encodeURIComponent(category.name)}`;
                       }}
-                      className="w-full bg-blue-600 text-white py-1 px-2 rounded-md hover:bg-blue-700 transition-all duration-200 font-bold text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                      className="w-full bg-blue-600 text-white py-1 px-2 rounded-lg hover:bg-blue-700 transition-all duration-200 font-bold text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-1 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     >
-                      Shop Now
+                      Browse Category
                     </button>
                   </div>
                 </div>
@@ -859,7 +821,7 @@ export default function Home() {
             <p className="text-sm sm:text-base text-gray-600">Shop from your favorite brands</p>
           </div>
           
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+  <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
           {[
             {
               name: "Apple",
@@ -907,13 +869,13 @@ export default function Home() {
                   {/* Circular Brand Logo Container */}
                   <div className="relative w-36 h-36 sm:w-40 sm:h-40 mx-auto mb-2">
                     {/* Outer Circle with Gradient */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-2 group-hover:scale-110 transition-transform duration-300">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 p-1 group-hover:scale-105 transition-transform duration-300">
                       {/* Inner Circle with Brand Image */}
-                      <div className="w-full h-full rounded-full overflow-hidden bg-white border-4 border-white shadow-xl">
+                      <div className="w-full h-full rounded-full overflow-hidden bg-white border-2 border-white shadow-xl">
                         <img
                           src={brand.image}
                           alt={brand.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover rounded-full"
                         />
                       </div>
                     </div>
@@ -940,7 +902,7 @@ export default function Home() {
                           setNotifications(prev => prev.slice(1));
                         }, 3000);
                       }}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     >
                       Shop Now
                     </button>

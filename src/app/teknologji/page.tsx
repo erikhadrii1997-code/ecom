@@ -1,4 +1,7 @@
+
 'use client'
+// ...existing code...
+// Set main background and sections to solid gray colors
 
 import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
@@ -631,7 +634,7 @@ export default function TeknologjiPage() {
 
           {/* Flash Deals Banner */}
           <div className="bg-gradient-to-r from-red-500 to-pink-600 text-white p-6 rounded-2xl mb-8 text-center">
-            <h3 className="text-2xl font-bold mb-2">⚡ Technology Flash Deals!</h3>
+            <h3 className="text-2xl font-bold mb-2">Technology Flash Deals!</h3>
             <p className="text-lg">Up to 25% off on selected tech products • Limited time only</p>
           </div>
 

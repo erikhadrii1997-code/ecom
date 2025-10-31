@@ -33,7 +33,7 @@ export default function FeaturedProducts({
   onViewProduct
 }: FeaturedProductsProps) {
   return (
-    <section className="py-8 sm:py-12 bg-gray-50">
+  <section className="py-8 sm:py-12 bg-blue-50">
       <div className="container mx-auto px-2 sm:px-4">
         <div className="text-center mb-6 sm:mb-8">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2">
