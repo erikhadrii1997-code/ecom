@@ -2,7 +2,7 @@
 
 interface Category {
   name: string
-  icon: string
+  icon?: string
   count: number
   color: string
   image: string
@@ -54,10 +54,12 @@ export default function CategoriesSection({ categories, onCategorySelect }: Cate
                   {category.count}
                 </div>
                 
-                {/* Category Icon Overlay */}
-                <div className="absolute bottom-2 left-2 text-xl bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-lg">
-                  {category.icon}
-                </div>
+                {/* Category Icon Overlay - Only show if icon exists */}
+                {category.icon && (
+                  <div className="absolute bottom-2 left-2 text-xl bg-white/90 backdrop-blur-sm rounded-full p-1.5 shadow-lg">
+                    {category.icon}
+                  </div>
+                )}
               </div>
               
               {/* Category Information */}
@@ -66,7 +68,7 @@ export default function CategoriesSection({ categories, onCategorySelect }: Cate
                   {category.name}
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-600 mb-3 font-medium">
-                  {category.count.toLocaleString()} products
+                  {typeof category.count === 'number' ? `${category.count.toLocaleString()} products` : ''}
                 </p>
                 
                 {/* Browse Button */}

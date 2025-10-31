@@ -62,30 +62,49 @@ export default function FeaturedProducts({
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onAddToCart={() => onAddToCart(product)}
-              onViewProduct={onViewProduct}
-            />
-          ))}
-        </div>
+        {/* Products Grid */}
+        {products.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCart={() => onAddToCart(product)}
+                onViewProduct={onViewProduct}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <div className="text-gray-400 text-6xl mb-4">🔍</div>
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">No products found</h3>
+            <p className="text-gray-500 mb-6">
+              Try adjusting your search terms or browse our categories
+            </p>
+            <button 
+              onClick={() => onCategoryChange('All')}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+            >
+              Show All Products
+            </button>
+          </div>
+        )}
 
-        {/* Load More Button */}
-        <div className="text-center mt-6 sm:mt-8">
-          <button 
-            onClick={() => {
-              // Simulate loading more products
-              console.log('Loading more products...');
-              // In a real app, this would fetch more products from an API
-            }}
-            className="bg-white hover:bg-gray-50 text-blue-600 border border-blue-600 px-4 sm:px-6 py-2 sm:py-3 rounded-md font-medium transition-colors duration-200 hover:shadow-lg transform hover:-translate-y-0.5 text-sm sm:text-base"
-          >
-            Load More Products
-          </button>
-        </div>
+        {/* Load More Button - Only show if there are products */}
+        {products.length > 0 && (
+          <div className="text-center mt-6 sm:mt-8">
+            <button 
+              onClick={() => {
+                // Simulate loading more products
+                console.log('Loading more products...');
+                // In a real app, this would fetch more products from an API
+              }}
+              className="bg-white hover:bg-gray-50 text-blue-600 border border-blue-600 px-4 sm:px-6 py-2 sm:py-3 rounded-md font-medium transition-colors duration-200 hover:shadow-lg transform hover:-translate-y-0.5 text-sm sm:text-base"
+            >
+              Load More Products
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )

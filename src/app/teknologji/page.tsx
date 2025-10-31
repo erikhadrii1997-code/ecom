@@ -36,7 +36,7 @@ const technologyProducts = [
     name: 'Laptop ThinkBook 14 G8 - Arctic Grey',
     price: 1299,
     originalPrice: 1499,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/85/5d/97/1755526480/laptop-thinkbook-14-g8-21sj0089pb-w11pro-ultra-7-255h16gb512gbint140-wuxgaarctic-grey3yrs-os--co2-offset-abp-200024729-0.webp',
+    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=400&fit=crop',
     rating: 4.7,
     reviews: 145,
     category: 'Laptops',
@@ -48,7 +48,7 @@ const technologyProducts = [
     name: 'Laptop ThinkPad E16 G3 - Professional Black',
     price: 1199,
     originalPrice: 1399,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/0c/f1/28/1755528403/laptop-thinkpad-e16-g3-21st0035pb-w11pro-7-25016gb512gbint160-wuxgablack1yr-premier--3yr-os--co2-offset-abp-200029060-0.webp',
+    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=400&fit=crop',
     rating: 4.8,
     reviews: 89,
     category: 'Laptops',
@@ -60,7 +60,7 @@ const technologyProducts = [
     name: 'Kruger & Matz Fun 10.08" Kids Tablet - Blue',
     price: 149,
     originalPrice: 199,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/7f/80/15/1755545491/childrens-tablet-kruger--matz-fun-1008-blue-abp-200022418-0.webp',
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=400&fit=crop',
     rating: 4.3,
     reviews: 67,
     category: 'Tablets',
@@ -72,7 +72,7 @@ const technologyProducts = [
     name: 'TCL Tab 10L Gen 2 - HD Space Black',
     price: 179,
     originalPrice: 229,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/cc/3d/05/1755891214/tcl-tablet-tab-10l-gen-2-332gb-hd-space-black-8492a-2alcwe11-rmu-200009495-0.webp',
+    image: 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=400&h=400&fit=crop',
     rating: 4.4,
     reviews: 92,
     category: 'Tablets',
@@ -84,7 +84,7 @@ const technologyProducts = [
     name: 'Lenovo Tab M11 4G - MediaTek LTE 128GB',
     price: 299,
     originalPrice: 349,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/53/94/6b/1717427187/lenovo-tab-m11-4g-mediatek-lte-128-gb-279-cm-11-4-gb-wi-fi-5-80211ac-android-13-grey-acn-300107956-0.webp',
+    image: 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=400&h=400&fit=crop',
     rating: 4.6,
     reviews: 134,
     category: 'Tablets',
@@ -96,7 +96,7 @@ const technologyProducts = [
     name: 'Lenovo IdeaCentre AIO 24IRH9 - All-in-One PC',
     price: 899,
     originalPrice: 1099,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/f5/c3/76/1756127865/lenovo-ideacentre-aio-24irh9-i5-13420h-238-fhd-ips-ag-250nits-100hz-16gb-ddr5-5200-ssd1tb-intel-uhd-graphics-win11-cloud-grey-acn-300306465-0.webp',
+    image: 'https://images.unsplash.com/photo-1547082299-de196ea013d6?w=400&h=400&fit=crop',
     rating: 4.7,
     reviews: 78,
     category: 'All-in-One PCs',
@@ -104,27 +104,279 @@ const technologyProducts = [
     discount: 18
   },
   {
-    id: 7,
-    name: 'Yealink MeetingBoard 75" Pro - Conference Display',
-    price: 2999,
-    originalPrice: 3499,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/5a/b6/60/1756130758/yealink-meetingboard-75-pro-a02-kst-200046787-0.webp',
-    rating: 4.9,
-    reviews: 34,
-    category: 'Conference Solutions',
-    badge: 'Enterprise',
-    discount: 14
-  },
-  {
     id: 8,
     name: 'Metz 43MQE7600Z - 43" QLED 4K Ultra HD TV',
     price: 599,
     originalPrice: 799,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/ed/56/c4/1755771514/metz-43mqe7600z-43-qled-4k-ultra-hd-tv-inp-200006888-0.webp',
+    image: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=400&fit=crop',
     rating: 4.5,
     reviews: 156,
     category: 'Smart TVs',
     badge: 'QLED',
+    discount: 25
+  },
+  {
+    id: 9,
+    name: 'Apple iPhone 15 Pro Max - Premium Titanium',
+    price: 1299,
+    originalPrice: 1499,
+    image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&h=400&fit=crop',
+    rating: 4.9,
+    reviews: 287,
+    category: 'Smartphones',
+    badge: 'Premium',
+    discount: 13
+  },
+  {
+    id: 10,
+    name: 'Samsung Galaxy S24 Ultra - Advanced Technology',
+    price: 1199,
+    originalPrice: 1399,
+    image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 234,
+    category: 'Smartphones',
+    badge: 'Ultra Performance',
+    discount: 14
+  },
+  {
+    id: 11,
+    name: 'Google Pixel 8 Pro - AI Photography Excellence',
+    price: 899,
+    originalPrice: 1099,
+    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 189,
+    category: 'Smartphones',
+    badge: 'AI Powered',
+    discount: 18
+  },
+  {
+    id: 12,
+    name: 'MacBook Air M3 15" - Ultimate Performance',
+    price: 1599,
+    originalPrice: 1799,
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop',
+    rating: 4.9,
+    reviews: 267,
+    category: 'Laptops',
+    badge: 'M3 Chip',
+    discount: 11
+  },
+  {
+    id: 13,
+    name: 'Samsung Galaxy Tab S9 Ultra - Creative Powerhouse',
+    price: 1299,
+    originalPrice: 1499,
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 198,
+    category: 'Tablets',
+    badge: 'Ultra Display',
+    discount: 13
+  },
+  {
+    id: 14,
+    name: 'Sony WH-1000XM5 - Premium Noise Cancelling',
+    price: 349,
+    originalPrice: 399,
+    image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 445,
+    category: 'Audio',
+    badge: 'Best Audio',
+    discount: 13
+  },
+  {
+    id: 15,
+    name: 'ASUS ROG Strix Gaming Laptop - RTX 4060',
+    price: 1399,
+    originalPrice: 1699,
+    image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 178,
+    category: 'Laptops',
+    badge: 'Gaming Beast',
+    discount: 18
+  },
+  {
+    id: 16,
+    name: 'Apple Watch Series 9 GPS + Cellular',
+    price: 449,
+    originalPrice: 529,
+    image: 'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 234,
+    category: 'Wearables',
+    badge: 'Health Focus',
+    discount: 15
+  },
+  {
+    id: 17,
+    name: 'Dell XPS 13 Plus - Ultra Portable',
+    price: 1199,
+    originalPrice: 1399,
+    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=400&fit=crop',
+    rating: 4.5,
+    reviews: 156,
+    category: 'Laptops',
+    badge: 'Ultra Thin',
+    discount: 14
+  },
+  {
+    id: 18,
+    name: 'iPad Pro 12.9" M2 - Professional Graphics',
+    price: 1199,
+    originalPrice: 1399,
+    image: 'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=400&h=400&fit=crop',
+    rating: 4.9,
+    reviews: 189,
+    category: 'Tablets',
+    badge: 'Pro Level',
+    discount: 14
+  },
+  {
+    id: 19,
+    name: 'Microsoft Surface Studio Laptop',
+    price: 1799,
+    originalPrice: 1999,
+    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 123,
+    category: 'Laptops',
+    badge: 'Creative Pro',
+    discount: 10
+  },
+  {
+    id: 20,
+    name: 'Samsung Galaxy Buds 3 Pro - Spatial Audio',
+    price: 249,
+    originalPrice: 299,
+    image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop',
+    rating: 4.4,
+    reviews: 267,
+    category: 'Audio',
+    badge: 'Spatial Audio',
+    discount: 17
+  },
+  {
+    id: 21,
+    name: 'Alienware m18 R2 Gaming Laptop - RTX 4080',
+    price: 2499,
+    originalPrice: 2999,
+    image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 98,
+    category: 'Laptops',
+    badge: 'Ultimate Gaming',
+    discount: 17
+  },
+  {
+    id: 22,
+    name: 'OnePlus 12 Pro - Fast Charging Champion',
+    price: 799,
+    originalPrice: 949,
+    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 178,
+    category: 'Smartphones',
+    badge: 'Fast Charge',
+    discount: 16
+  },
+  {
+    id: 23,
+    name: 'iPhone 14 Pro Max - Deep Purple',
+    price: 1099,
+    originalPrice: 1299,
+    image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&h=400&fit=crop',
+    rating: 4.9,
+    reviews: 456,
+    category: 'Smartphones',
+    badge: 'Pro Max',
+    discount: 15
+  },
+  {
+    id: 24,
+    name: 'Samsung Galaxy S24 Ultra - Titanium',
+    price: 1199,
+    originalPrice: 1399,
+    image: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 289,
+    category: 'Smartphones',
+    badge: 'Ultra',
+    discount: 14
+  },
+  {
+    id: 25,
+    name: 'Lenovo ThinkPad X1 Carbon - Business',
+    price: 1899,
+    originalPrice: 2199,
+    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 167,
+    category: 'Laptops',
+    badge: 'Business',
+    discount: 14
+  },
+  {
+    id: 26,
+    name: 'HP Pavilion Gaming Laptop - RTX 3060',
+    price: 1299,
+    originalPrice: 1599,
+    image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=400&fit=crop',
+    rating: 4.5,
+    reviews: 234,
+    category: 'Laptops',
+    badge: 'Gaming',
+    discount: 19
+  },
+  {
+    id: 27,
+    name: 'iPad Mini 6th Gen - WiFi + Cellular',
+    price: 649,
+    originalPrice: 749,
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 145,
+    category: 'Tablets',
+    badge: 'Mini',
+    discount: 13
+  },
+  {
+    id: 28,
+    name: 'AirPods Pro 2nd Gen - Spatial Audio',
+    price: 249,
+    originalPrice: 299,
+    image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 567,
+    category: 'Audio',
+    badge: 'Pro',
+    discount: 17
+  },
+  {
+    id: 29,
+    name: 'Gaming Monitor 27" 144Hz - ASUS',
+    price: 399,
+    originalPrice: 499,
+    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 289,
+    category: 'Monitors',
+    badge: '144Hz',
+    discount: 20
+  },
+  {
+    id: 30,
+    name: 'Mechanical Keyboard RGB - Corsair',
+    price: 149,
+    originalPrice: 199,
+    image: 'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=400&fit=crop',
+    rating: 4.5,
+    reviews: 178,
+    category: 'Accessories',
+    badge: 'RGB',
     discount: 25
   }
 ]
@@ -133,36 +385,37 @@ const technologyProducts = [
 const technologyCategories = [
   {
     name: 'Laptops',
-    icon: '💻',
-    count: technologyProducts.filter(p => p.category === 'Laptops').length,
+    count: 2, // Hardcoded count
     color: 'from-blue-500 to-blue-600',
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/85/5d/97/1755526480/laptop-thinkbook-14-g8-21sj0089pb-w11pro-ultra-7-255h16gb512gbint140-wuxgaarctic-grey3yrs-os--co2-offset-abp-200024729-0.webp'
   },
   {
     name: 'Tablets',
-    icon: '📱',
-    count: technologyProducts.filter(p => p.category === 'Tablets').length,
+    count: 2, // Hardcoded count
     color: 'from-green-500 to-green-600',
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/53/94/6b/1717427187/lenovo-tab-m11-4g-mediatek-lte-128-gb-279-cm-11-4-gb-wi-fi-5-80211ac-android-13-grey-acn-300107956-0.webp'
   },
   {
     name: 'All-in-One PCs',
-    icon: '🖥️',
-    count: technologyProducts.filter(p => p.category === 'All-in-One PCs').length,
+    count: 1, // Hardcoded count
     color: 'from-purple-500 to-purple-600',
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/f5/c3/76/1756127865/lenovo-ideacentre-aio-24irh9-i5-13420h-238-fhd-ips-ag-250nits-100hz-16gb-ddr5-5200-ssd1tb-intel-uhd-graphics-win11-cloud-grey-acn-300306465-0.webp'
   },
   {
     name: 'Smart TVs',
-    icon: '📺',
-    count: technologyProducts.filter(p => p.category === 'Smart TVs').length,
+    count: 1, // Hardcoded count
     color: 'from-red-500 to-red-600',
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/ed/56/c4/1755771514/metz-43mqe7600z-43-qled-4k-ultra-hd-tv-inp-200006888-0.webp'
   },
   {
+    name: 'Smartphones',
+    count: 0, // Hardcoded count
+    color: 'from-indigo-500 to-indigo-600',
+    image: 'https://i.ebayimg.com/images/g/oLcAAeSw-Zdoup2q/s-l2400.png'
+  },
+  {
     name: 'Conference Solutions',
-    icon: '🎯',
-    count: technologyProducts.filter(p => p.category === 'Conference Solutions').length,
+    count: 1, // Hardcoded count
     color: 'from-orange-500 to-orange-600',
     image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/5a/b6/60/1756130758/yealink-meetingboard-75-pro-a02-kst-200046787-0.webp'
   }
@@ -354,8 +607,9 @@ export default function TeknologjiPage() {
         onSearchChange={setSearchQuery}
       />
 
-      {/* Hero Slider */}
-      <HeroSlider slides={technologySlides} />
+  {/* Hero Slider */}
+  <HeroSlider slides={technologySlides} />
+  <div id="products" />
 
       {/* Categories Section */}
       <CategoriesSection 

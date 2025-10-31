@@ -31,10 +31,10 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }: Pro
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-200 hover:border-blue-400 transform hover:-translate-y-2">
+    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-200 hover:border-blue-400 transform hover:-translate-y-1">
       <div className="relative">
-        {/* Rectangular Image Container */}
-        <div className="relative w-full h-48 sm:h-52 lg:h-56 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+        {/* Rectangular Image Container - Much Larger for Focus */}
+        <div className="relative w-full h-40 sm:h-44 lg:h-48 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
           {/* Main Rectangular Image */}
           <img
             src={product.image}
@@ -44,14 +44,14 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }: Pro
           
           {/* Badge - Positioned on top of image */}
           {product.badge && (
-            <div className="absolute top-3 left-3 bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow-lg">
+            <div className="absolute top-1 left-1 bg-gradient-to-r from-red-500 to-pink-500 text-white px-1.5 py-0.5 rounded-md text-xs font-bold shadow-lg">
               {product.badge}
             </div>
           )}
           
           {/* Discount - Positioned on the circular image */}
           {product.discount && (
-            <div className="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg">
+            <div className="absolute top-1 right-1 bg-green-500 text-white px-1 py-0.5 rounded-full text-xs font-bold shadow-lg">
               -{product.discount}%
             </div>
           )}
@@ -59,9 +59,9 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }: Pro
           {/* Wishlist Button - Floating on the circular image */}
           <button
             onClick={handleWishlist}
-            className="absolute bottom-2 right-2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+            className="absolute bottom-1 right-1 bg-white/90 hover:bg-white p-1 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
           >
-            <svg className="w-4 h-4" fill={isWishlisted ? 'red' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-2.5 h-2.5" fill={isWishlisted ? 'red' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </button>
@@ -69,9 +69,9 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }: Pro
           {/* Quick View Button - Floating on the circular image */}
           <button
             onClick={() => setShowQuickView(true)}
-            className="absolute bottom-2 left-2 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
+            className="absolute bottom-1 left-1 bg-blue-600 hover:bg-blue-700 text-white p-1 rounded-full shadow-lg transition-all duration-300 hover:scale-110 opacity-0 group-hover:opacity-100"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
             </svg>
@@ -79,26 +79,25 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }: Pro
         </div>
       </div>
       
-      <div className="p-4 sm:p-5">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full font-semibold">
+      <div className="p-1.5 sm:p-2">
+        <div className="flex items-center justify-between mb-0.5">
+          <span className="text-xs text-blue-600 bg-blue-50 px-1 py-0.5 rounded font-semibold">
             {product.category}
           </span>
-          <div className="flex items-center space-x-1">
-            <svg className="w-3 h-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+          <div className="flex items-center space-x-0.5">
+            <svg className="w-2 h-2 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
             <span className="text-xs font-semibold text-gray-700">{product.rating}</span>
-            <span className="text-xs text-gray-500">({product.reviews})</span>
           </div>
         </div>
         
-        <h3 className="font-bold text-gray-900 mb-2 text-sm sm:text-base line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
+        <h3 className="font-bold text-gray-900 mb-0.5 text-xs line-clamp-1 group-hover:text-blue-600 transition-colors duration-200">
           {product.name}
         </h3>
         
-        <div className="flex items-center space-x-2 mb-3">
-          <span className="text-lg sm:text-xl font-bold text-gray-900">
+        <div className="flex items-center justify-between mb-1">
+          <span className="text-sm font-bold text-gray-900">
             ${product.price.toLocaleString()}
           </span>
           {product.originalPrice && (
@@ -108,22 +107,19 @@ export default function ProductCard({ product, onAddToCart, onViewProduct }: Pro
           )}
         </div>
         
-        {/* Enhanced Action Buttons */}
-        <div className="space-y-2">
+        <div className="flex gap-2">
           <button
             onClick={onAddToCart}
-            className="w-full bg-blue-600 text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition-all duration-300 font-bold text-xs sm:text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            className="flex-1 bg-blue-600 text-white py-1 px-2 rounded-md hover:bg-blue-700 transition-all duration-300 font-bold text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             Add to Cart
           </button>
-          {onViewProduct && (
-            <button
-              onClick={() => onViewProduct(product)}
-              className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-1.5 px-3 rounded-lg font-semibold transition-all duration-300 text-xs sm:text-sm"
-            >
-              View Details
-            </button>
-          )}
+          <button
+            onClick={() => onViewProduct && onViewProduct(product)}
+            className="flex-1 bg-gray-100 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-200 transition-all duration-300 font-bold text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 border border-gray-300"
+          >
+            View Product
+          </button>
         </div>
       </div>
 

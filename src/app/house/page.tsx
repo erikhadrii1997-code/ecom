@@ -35,7 +35,7 @@ const houseProducts = [
     name: 'Modern House Design 3-Bedroom',
     price: 2500,
     originalPrice: 2999,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=1920,width=1920/media/4b/38/66/1755003386/Shtepi3.png',
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop',
     rating: 4.8,
     reviews: 124,
     category: 'House Design',
@@ -47,11 +47,11 @@ const houseProducts = [
     name: 'Contemporary Garden House',
     price: 3200,
     originalPrice: 3599,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=1920,width=1920/media/52/b3/8b/1755003410/Kopsht4.png',
+    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=400&fit=crop',
     rating: 4.9,
     reviews: 89,
     category: 'House Design',
-    badge: 'New',
+    badge: 'Premium',
     discount: 11
   },
   {
@@ -59,7 +59,7 @@ const houseProducts = [
     name: 'Komoda Sirtar 11-Drawer Cabinet',
     price: 450,
     originalPrice: 520,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=1920,width=1920/media/c3/13/db/1755248064/KomodaSirtar11.png',
+    image: 'https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=400&h=400&fit=crop',
     rating: 4.7,
     reviews: 203,
     category: 'Storage',
@@ -71,7 +71,7 @@ const houseProducts = [
     name: 'Extendable Dining Table & Chairs Set',
     price: 699,
     originalPrice: 799,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/47/c9/ea/1754748799/extendable-dining-table--chairs-set-4-pieces-hanah-home-vina-1053---anthracite-white-asg-200008357-0.webp',
+    image: 'https://images.unsplash.com/photo-1549497538-303791108f95?w=400&h=400&fit=crop',
     rating: 4.6,
     reviews: 156,
     category: 'Dining',
@@ -83,7 +83,7 @@ const houseProducts = [
     name: 'Nightstand Hanah Home Kale',
     price: 89,
     originalPrice: 109,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/5c/56/9f/1754489483/nightstand-hanah-home-kale---4922-asg-200006175-0.webp',
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=400&fit=crop',
     rating: 4.8,
     reviews: 78,
     category: 'Bedroom',
@@ -95,11 +95,11 @@ const houseProducts = [
     name: 'Nightstand Hanah Home Elina',
     price: 95,
     originalPrice: 119,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/c4/28/7a/1754514355/nightstand-hanah-home-elina---8170-asg-200006166-0.webp',
+    image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=400&h=400&fit=crop',
     rating: 4.7,
     reviews: 92,
     category: 'Bedroom',
-    badge: 'Smart',
+    badge: 'Popular',
     discount: 20
   },
   {
@@ -107,7 +107,7 @@ const houseProducts = [
     name: 'Multi-Purpose Cabinet Grano - Oak',
     price: 320,
     originalPrice: 380,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/7b/a8/9e/1754567102/multi-purpose-cabinet-hanah-home-grano-140---caucasian-oak-asg-200004022-0.webp',
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop',
     rating: 4.9,
     reviews: 67,
     category: 'Storage',
@@ -115,23 +115,11 @@ const houseProducts = [
     discount: 16
   },
   {
-    id: 8,
-    name: 'Living Room Set Best - Walnut',
-    price: 1250,
-    originalPrice: 1450,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/7b/bd/cc/1754466162/living-room-furniture-set-hanah-home-best---walnut-asg-200005422-0.webp',
-    rating: 4.8,
-    reviews: 234,
-    category: 'Living Room',
-    badge: 'Eco-Friendly',
-    discount: 14
-  },
-  {
     id: 9,
     name: 'Premium Home Fragrance Collection',
     price: 85,
     originalPrice: 105,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/21/8a/98/1754665479/twilly-dhermes-eau-de-perfume-spray-30ml-bts-200003821-0.webp',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop',
     rating: 4.8,
     reviews: 145,
     category: 'Decor',
@@ -139,23 +127,11 @@ const houseProducts = [
     discount: 19
   },
   {
-    id: 10,
-    name: 'Designer Table Accessories Set',
-    price: 125,
-    originalPrice: 149,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/bb/dd/b0/1755100442/q-by-dolce--gabbana-intense-eau-de-parfum-spray-100ml-pvp-200034993-0.webp',
-    rating: 4.7,
-    reviews: 89,
-    category: 'Decor',
-    badge: 'Designer',
-    discount: 16
-  },
-  {
     id: 11,
     name: 'Modern Kitchen Essentials',
     price: 55,
     originalPrice: 75,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/f7/93/a2/1754665908/tommy-hilfiger-tommy-hil-impact-together-etv-100ml-bts-200029959-0.webp',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
     rating: 4.5,
     reviews: 123,
     category: 'Kitchen',
@@ -167,12 +143,252 @@ const houseProducts = [
     name: 'Bathroom Luxury Set',
     price: 95,
     originalPrice: 119,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/a7/09/d6/1754296357/eau-de-parfum-carolina-herrera-good-girl--50-ml-rev-200008681-0.webp',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=400&fit=crop',
     rating: 4.6,
     reviews: 167,
     category: 'Bathroom',
     badge: 'Premium',
     discount: 20
+  },
+  {
+    id: 13,
+    name: '1-Seat Sofa Atelier Del Sofa Hamlet - Beige',
+    price: 599,
+    originalPrice: 699,
+    image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 145,
+    category: 'Living Room',
+    badge: 'Designer',
+    discount: 14
+  },
+  {
+    id: 14,
+    name: '2-Seat Sofa Atelier Del Sofa Petra 2 - Blue',
+    price: 899,
+    originalPrice: 1099,
+    image: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=400&fit=crop',
+    rating: 4.9,
+    reviews: 189,
+    category: 'Living Room',
+    badge: 'Premium',
+    discount: 18
+  },
+  {
+    id: 15,
+    name: 'Corner Sofa Atelier Del Sofa Pars Cream - Corner V2',
+    price: 1299,
+    originalPrice: 1599,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/77/08/6c/1754494669/corner-sofa-atelier-del-sofa-pars-cream-1l--1r---corner-v2-asg-200031077-0.webp',
+    rating: 4.7,
+    reviews: 134,
+    category: 'Living Room',
+    badge: 'Best Seller',
+    discount: 19
+  },
+  {
+    id: 16,
+    name: 'Corner Sofa Atelier Del Sofa Sora with Pouffe - Brown',
+    price: 1499,
+    originalPrice: 1799,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/5e/df/44/1754471260/corner-sofa-atelier-del-sofa-sora-l1-o1-o1-1r-pouffe----brown-asg-200031133-0.webp',
+    rating: 4.8,
+    reviews: 167,
+    category: 'Living Room',
+    badge: 'Luxury',
+    discount: 17
+  },
+  {
+    id: 17,
+    name: 'Corner Sofa Atelier Del Sofa Lily Corner Left - Green',
+    price: 1199,
+    originalPrice: 1399,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/ab/22/b5/1754496359/corner-sofa-atelier-del-sofa-lily-corner-left-green-asg-200031199-0.webp',
+    rating: 4.6,
+    reviews: 123,
+    category: 'Living Room',
+    badge: 'Modern',
+    discount: 14
+  },
+  {
+    id: 18,
+    name: '3-Seat Sofa Atelier Del Sofa Napoli - Cappuccino',
+    price: 1099,
+    originalPrice: 1299,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/e9/71/ba/1754517659/3-seat-sofa-atelier-del-sofa-napoli---cappuccino-asg-200033010-0.webp',
+    rating: 4.7,
+    reviews: 156,
+    category: 'Living Room',
+    badge: 'Comfort',
+    discount: 15
+  },
+  {
+    id: 19,
+    name: 'Dining Table Set Oak Wood - 6 Chairs',
+    price: 899,
+    originalPrice: 1199,
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 234,
+    category: 'Dining Room',
+    badge: 'Oak Wood',
+    discount: 25
+  },
+  {
+    id: 20,
+    name: 'Modern Bedroom Set - King Size',
+    price: 1599,
+    originalPrice: 1899,
+    image: 'https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 189,
+    category: 'Bedroom',
+    badge: 'Complete Set',
+    discount: 16
+  },
+  {
+    id: 21,
+    name: 'Kitchen Cabinet Set - White Modern',
+    price: 2299,
+    originalPrice: 2799,
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 145,
+    category: 'Kitchen',
+    badge: 'Modern Design',
+    discount: 18
+  },
+  {
+    id: 22,
+    name: 'Office Desk Executive - Walnut Finish',
+    price: 799,
+    originalPrice: 999,
+    image: 'https://images.unsplash.com/photo-1541558869434-2840d308329a?w=400&h=400&fit=crop',
+    rating: 4.5,
+    reviews: 167,
+    category: 'Office',
+    badge: 'Executive',
+    discount: 20
+  },
+  {
+    id: 24,
+    name: 'Garden Patio Set - Teak Wood',
+    price: 1299,
+    originalPrice: 1599,
+    image: 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 134,
+    category: 'Garden',
+    badge: 'Weather Resistant',
+    discount: 19
+  },
+  {
+    id: 25,
+    name: 'Luxury Mattress - Memory Foam Queen',
+    price: 899,
+    originalPrice: 1199,
+    image: 'https://images.unsplash.com/photo-1541558869434-2840d308329a?w=400&h=400&fit=crop',
+    rating: 4.9,
+    reviews: 278,
+    category: 'Bedroom',
+    badge: 'Memory Foam',
+    discount: 25
+  },
+  {
+    id: 26,
+    name: 'TV Stand Entertainment Center - 65"',
+    price: 549,
+    originalPrice: 699,
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 156,
+    category: 'Living Room',
+    badge: 'Large Screen',
+    discount: 21
+  },
+  {
+    id: 27,
+    name: '4-Seat Sofa Atelier Del Sofa Monaco - Grey',
+    price: 1499,
+    originalPrice: 1799,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/9d/66/3f/1754762664/2-seat-sofa-atelier-del-sofa-petra-2---blue-asg-200030779-0.webp',
+    rating: 4.8,
+    reviews: 189,
+    category: 'Living Room',
+    badge: 'Luxury',
+    discount: 17
+  },
+  {
+    id: 28,
+    name: 'Recliner Sofa Atelier Del Sofa Comfort - Brown',
+    price: 899,
+    originalPrice: 1099,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/4c/87/5c/1754506855/1-seat-sofa-atelier-del-sofa-hamlet---beige-asg-200030698-0.webp',
+    rating: 4.7,
+    reviews: 167,
+    category: 'Living Room',
+    badge: 'Comfort',
+    discount: 18
+  },
+  {
+    id: 29,
+    name: 'L-Shape Corner Sofa Atelier Del Sofa Milan',
+    price: 1799,
+    originalPrice: 2199,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/ab/22/b5/1754496359/corner-sofa-atelier-del-sofa-lily-corner-left-green-asg-200031199-0.webp',
+    rating: 4.9,
+    reviews: 134,
+    category: 'Living Room',
+    badge: 'L-Shape',
+    discount: 18
+  },
+  {
+    id: 30,
+    name: 'Chesterfield Sofa Atelier Del Sofa Classic',
+    price: 1299,
+    originalPrice: 1599,
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/e9/71/ba/1754517659/3-seat-sofa-atelier-del-sofa-napoli---cappuccino-asg-200033010-0.webp',
+    rating: 4.6,
+    reviews: 178,
+    category: 'Living Room',
+    badge: 'Classic',
+    discount: 19
+  },
+  {
+    id: 31,
+    name: 'Modern Dining Set - 8 Chairs Oak Wood',
+    price: 1199,
+    originalPrice: 1499,
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 145,
+    category: 'Dining Room',
+    badge: 'Large',
+    discount: 20
+  },
+  {
+    id: 32,
+    name: 'King Size Bed Frame - Upholstered',
+    price: 799,
+    originalPrice: 999,
+    image: 'https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=400&h=400&fit=crop',
+    rating: 4.5,
+    reviews: 234,
+    category: 'Bedroom',
+    badge: 'Upholstered',
+    discount: 20
+  },
+  {
+    id: 33,
+    name: 'Walk-in Closet System - Modern',
+    price: 1899,
+    originalPrice: 2299,
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 98,
+    category: 'Storage',
+    badge: 'System',
+    discount: 17
   }
 ]
 
@@ -226,12 +442,12 @@ const houseSlides = [
 ]
 
 const categories = [
-  { name: 'House Design', icon: '🏠', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=1920,width=1920/media/4b/38/66/1755003386/Shtepi3.png', count: 247, color: 'bg-blue-500' },
-  { name: 'Living Room', icon: '🛋️', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/7b/bd/cc/1754466162/living-room-furniture-set-hanah-home-best---walnut-asg-200005422-0.webp', count: 189, color: 'bg-pink-500' },
-  { name: 'Bedroom', icon: '🛏️', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/5c/56/9f/1754489483/nightstand-hanah-home-kale---4922-asg-200006175-0.webp', count: 156, color: 'bg-green-500' },
-  { name: 'Dining', icon: '🍽️', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/47/c9/ea/1754748799/extendable-dining-table--chairs-set-4-pieces-hanah-home-vina-1053---anthracite-white-asg-200008357-0.webp', count: 98, color: 'bg-orange-500' },
-  { name: 'Storage', icon: '📦', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/7b/a8/9e/1754567102/multi-purpose-cabinet-hanah-home-grano-140---caucasian-oak-asg-200004022-0.webp', count: 134, color: 'bg-purple-500' },
-  { name: 'Kitchen', icon: '🍳', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=200&fit=crop', count: 87, color: 'bg-yellow-500' }
+  { name: 'House Design', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=1920,width=1920/media/4b/38/66/1755003386/Shtepi3.png', count: 247, color: 'bg-blue-500' },
+  { name: 'Living Room', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/4c/87/5c/1754506855/1-seat-sofa-atelier-del-sofa-hamlet---beige-asg-200030698-0.webp', count: 195, color: 'bg-pink-500' },
+  { name: 'Bedroom', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/5c/56/9f/1754489483/nightstand-hanah-home-kale---4922-asg-200006175-0.webp', count: 156, color: 'bg-green-500' },
+  { name: 'Dining', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/47/c9/ea/1754748799/extendable-dining-table--chairs-set-4-pieces-hanah-home-vina-1053---anthracite-white-asg-200008357-0.webp', count: 98, color: 'bg-orange-500' },
+  { name: 'Storage', image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/7b/a8/9e/1754567102/multi-purpose-cabinet-hanah-home-grano-140---caucasian-oak-asg-200004022-0.webp', count: 134, color: 'bg-purple-500' },
+  { name: 'Kitchen', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=200&fit=crop', count: 87, color: 'bg-yellow-500' }
 ]
 
 const testimonials = [
@@ -371,8 +587,9 @@ export default function HousePage() {
         onSearchChange={setSearchQuery}
       />
       
-      {/* Hero Slider */}
-      <HeroSlider slides={houseSlides} />
+  {/* Hero Slider */}
+  <HeroSlider slides={houseSlides} />
+  <div id="home" />
 
       {/* eBay-style Trust Indicators */}
       <div className="bg-gray-50 py-4 sm:py-6 border-b">

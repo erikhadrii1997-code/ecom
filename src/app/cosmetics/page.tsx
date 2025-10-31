@@ -35,7 +35,7 @@ const cosmeticsProducts = [
     name: 'Collistar Self Tanning Concentrate Body & Legs Magic Drops 125ml',
     price: 45,
     originalPrice: 59,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/ea/a2/d1/1754665196/collistar-self-tanning-concentrate-body-legs-magic-drops-125ml-bts-200006525-0.webp',
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop',
     rating: 4.7,
     reviews: 134,
     category: 'Skincare',
@@ -47,31 +47,19 @@ const cosmeticsProducts = [
     name: 'Twilly d\'Hermès Eau de Perfume Spray 30ml',
     price: 85,
     originalPrice: 105,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/21/8a/98/1754665479/twilly-dhermes-eau-de-perfume-spray-30ml-bts-200003821-0.webp',
-    rating: 4.9,
-    reviews: 287,
+    image: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 89,
     category: 'Perfumes',
     badge: 'Luxury',
     discount: 19
-  },
-  {
-    id: 3,
-    name: 'Q by Dolce & Gabbana Intense Eau de Parfum Spray 100ml',
-    price: 125,
-    originalPrice: 149,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/bb/dd/b0/1755100442/q-by-dolce--gabbana-intense-eau-de-parfum-spray-100ml-pvp-200034993-0.webp',
-    rating: 4.8,
-    reviews: 198,
-    category: 'Perfumes',
-    badge: 'Premium',
-    discount: 16
   },
   {
     id: 4,
     name: 'Hermès Paris Jour Absolue Eau de Parfum Rechargeable 50ml',
     price: 145,
     originalPrice: 169,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/da/36/94/1754664342/hermes-hermes-paris-jour-absolue-eau-de-parfum-rellenable-50ml-spray-bts-200019608-0.webp',
+    image: 'https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&h=400&fit=crop',
     rating: 4.9,
     reviews: 156,
     category: 'Perfumes',
@@ -79,27 +67,15 @@ const cosmeticsProducts = [
     discount: 14
   },
   {
-    id: 5,
-    name: 'Carolina Herrera Good Girl Eau de Parfum 50ml',
-    price: 95,
-    originalPrice: 119,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/a7/09/d6/1754296357/eau-de-parfum-carolina-herrera-good-girl--50-ml-rev-200008681-0.webp',
-    rating: 4.6,
-    reviews: 234,
-    category: 'Perfumes',
-    badge: 'Popular',
-    discount: 20
-  },
-  {
     id: 6,
     name: 'Boss Bottled Perfume Set - Spray 50ml + Deodorant 150ml',
     price: 65,
     originalPrice: 85,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/5f/15/0f/1755100795/boss-bottled-perfume-set-spray-50ml--deodorant-spray-150ml-pvp-200029480-0.webp',
+    image: 'https://images.unsplash.com/photo-1622556498246-755f44ca76f3?w=400&h=400&fit=crop',
     rating: 4.5,
     reviews: 167,
     category: 'Perfumes',
-    badge: 'Gift Set',
+    badge: 'Value Set',
     discount: 24
   },
   {
@@ -107,7 +83,7 @@ const cosmeticsProducts = [
     name: 'Tommy Hilfiger Impact Together EDT 100ml',
     price: 55,
     originalPrice: 75,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/f7/93/a2/1754665908/tommy-hilfiger-tommy-hil-impact-together-etv-100ml-bts-200029959-0.webp',
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop',
     rating: 4.4,
     reviews: 98,
     category: 'Perfumes',
@@ -119,7 +95,7 @@ const cosmeticsProducts = [
     name: 'Tommy Hilfiger Tommy Eau de Toilette Spray 200ml',
     price: 45,
     originalPrice: 59,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/48/ce/db/1754676407/tommy-hilfiger-tommy-eau-de-toilette-spray-200ml-bts-200001930-0.webp',
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop',
     rating: 4.3,
     reviews: 145,
     category: 'Perfumes',
@@ -131,7 +107,7 @@ const cosmeticsProducts = [
     name: 'Futurist Hydra Rescue Moisturizing Makeup SPF45 - 2N2 Buff 35ml',
     price: 52,
     originalPrice: 69,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/9b/ef/cb/1755100420/futurist-hydra-rescue-moisturizing-makeup-spf45-long-lasting-covering-illuminating-face-foundation-2n2-buff-35ml-pvp-200021136-0.webp',
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop',
     rating: 4.7,
     reviews: 189,
     category: 'Makeup',
@@ -139,23 +115,11 @@ const cosmeticsProducts = [
     discount: 25
   },
   {
-    id: 10,
-    name: 'Even Better Makeup SPF15 Foundation - CN 075 Custard 30ml',
-    price: 48,
-    originalPrice: 62,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/c5/5b/f4/1754664689/even-better-makeup-spf15-foundation-even-skin-tone-cn-075-custard-30ml-pvp-200018136-0.webp',
-    rating: 4.6,
-    reviews: 156,
-    category: 'Makeup',
-    badge: 'Even Tone',
-    discount: 23
-  },
-  {
     id: 11,
     name: 'Clarins Everlasting Youth Fluid Foundation SPF15 - 114 Cappuccino 30ml',
     price: 55,
     originalPrice: 72,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/c6/19/3d/1755612778/clarins-everlasting-youth-fluid-foundation-spf15-114-cappuccino-30ml-bts-200035812-0.webp',
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop',
     rating: 4.8,
     reviews: 203,
     category: 'Makeup',
@@ -167,7 +131,7 @@ const cosmeticsProducts = [
     name: 'Clarins Everlasting Youth Fluid Foundation SPF15 - 109 Wheat 30ml',
     price: 55,
     originalPrice: 72,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/94/aa/73/1755612789/clarins-everlasting-youth-fluid-foundation-spf15-109-wheat-30ml-bts-200035806-0.webp',
+    image: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400&h=400&fit=crop',
     rating: 4.8,
     reviews: 187,
     category: 'Makeup',
@@ -179,7 +143,7 @@ const cosmeticsProducts = [
     name: 'Alter Ego Scalpego Hair Shampoo 300ml',
     price: 28,
     originalPrice: 35,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/28/dc/94/1754297591/shampo-per-floke-alter-ego-scalpego-300-ml-rev-200007792-0.webp',
+    image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400&h=400&fit=crop',
     rating: 4.5,
     reviews: 134,
     category: 'Haircare',
@@ -191,12 +155,240 @@ const cosmeticsProducts = [
     name: 'Inebrya Ice Cream Liss Pro Shampoo 300ml',
     price: 25,
     originalPrice: 32,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/2f/a3/1c/1754393178/shampo-per-floke-inebrya-ice-cream-liss-pro-300-ml-rev-200002944-0.webp',
+    image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=400&fit=crop',
     rating: 4.4,
     reviews: 98,
     category: 'Haircare',
     badge: 'Smoothing',
     discount: 22
+  },
+  {
+    id: 15,
+    name: 'Davidoff Cool Water Aftershave Lotion 125ml',
+    price: 35,
+    originalPrice: 45,
+    image: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 145,
+    category: 'Men\'s Grooming',
+    badge: 'Fresh',
+    discount: 22
+  },
+  {
+    id: 17,
+    name: 'Philips S3242/12 Men\'s Electric Shaver - Black/Gold',
+    price: 85,
+    originalPrice: 109,
+    image: 'https://images.unsplash.com/photo-1503602642458-232111445657?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 234,
+    category: 'Men\'s Grooming',
+    badge: 'Electric',
+    discount: 22
+  },
+  {
+    id: 18,
+    name: 'Beard Balm Nourishing Balm for Beard 56.7g',
+    price: 18,
+    originalPrice: 24,
+    image: 'https://images.unsplash.com/photo-1580870069867-74c57ee1bb07?w=400&h=400&fit=crop',
+    rating: 4.5,
+    reviews: 167,
+    category: 'Men\'s Grooming',
+    badge: 'Nourishing',
+    discount: 25
+  },
+  {
+    id: 19,
+    name: 'Anti-Aging Serum - Vitamin C Complex',
+    price: 45,
+    originalPrice: 59,
+    image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 312,
+    category: 'Skincare',
+    badge: 'Vitamin C',
+    discount: 24
+  },
+  {
+    id: 20,
+    name: 'Professional Makeup Brush Set - 24 Pieces',
+    price: 89,
+    originalPrice: 119,
+    image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 245,
+    category: 'Makeup',
+    badge: 'Professional',
+    discount: 25
+  },
+  {
+    id: 21,
+    name: 'Hydrating Face Mask Set - 10 Pack',
+    price: 29,
+    originalPrice: 39,
+    image: 'https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=400&h=400&fit=crop',
+    rating: 4.4,
+    reviews: 189,
+    category: 'Skincare',
+    badge: 'Hydrating',
+    discount: 26
+  },
+  {
+    id: 22,
+    name: 'Premium Hair Oil - Argan & Jojoba',
+    price: 35,
+    originalPrice: 45,
+    image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 178,
+    category: 'Hair Care',
+    badge: 'Natural Oils',
+    discount: 22
+  },
+  {
+    id: 23,
+    name: 'Luxury Lipstick Set - 12 Shades',
+    price: 79,
+    originalPrice: 99,
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop',
+    rating: 4.5,
+    reviews: 234,
+    category: 'Makeup',
+    badge: 'Luxury',
+    discount: 20
+  },
+  {
+    id: 24,
+    name: 'Men\'s Cologne - Fresh Citrus Scent',
+    price: 69,
+    originalPrice: 89,
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 156,
+    category: 'Fragrance',
+    badge: 'Fresh Scent',
+    discount: 22
+  },
+  {
+    id: 25,
+    name: 'Eye Cream - Anti-Wrinkle Formula',
+    price: 55,
+    originalPrice: 69,
+    image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 198,
+    category: 'Skincare',
+    badge: 'Anti-Wrinkle',
+    discount: 20
+  },
+  {
+    id: 26,
+    name: 'Hair Styling Kit - Professional Tools',
+    price: 149,
+    originalPrice: 199,
+    image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 145,
+    category: 'Hair Care',
+    badge: 'Professional',
+    discount: 25
+  },
+  {
+    id: 27,
+    name: 'YSL Libre Eau de Parfum - 50ml',
+    price: 149,
+    originalPrice: 179,
+    image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 234,
+    category: 'Fragrance',
+    badge: 'Luxury',
+    discount: 17
+  },
+  {
+    id: 28,
+    name: 'Dior Sauvage EDT - 100ml',
+    price: 179,
+    originalPrice: 219,
+    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop',
+    rating: 4.9,
+    reviews: 345,
+    category: 'Fragrance',
+    badge: 'Bestseller',
+    discount: 18
+  },
+  {
+    id: 29,
+    name: 'Charlotte Tilbury Magic Cream - 50ml',
+    price: 129,
+    originalPrice: 149,
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 189,
+    category: 'Skincare',
+    badge: 'Magic',
+    discount: 13
+  },
+  {
+    id: 30,
+    name: 'Fenty Beauty Foundation - Full Coverage',
+    price: 39,
+    originalPrice: 49,
+    image: 'https://images.unsplash.com/photo-1567721913486-6585f069b332?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 267,
+    category: 'Makeup',
+    badge: 'Full Coverage',
+    discount: 20
+  },
+  {
+    id: 31,
+    name: 'Rare Beauty Liquid Blush - Soft Pink',
+    price: 25,
+    originalPrice: 32,
+    image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 156,
+    category: 'Makeup',
+    badge: 'Trending',
+    discount: 22
+  },
+  {
+    id: 32,
+    name: 'Glossier Cloud Paint Blush Set',
+    price: 45,
+    originalPrice: 54,
+    image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=400&fit=crop',
+    rating: 4.5,
+    reviews: 198,
+    category: 'Makeup',
+    badge: 'Set',
+    discount: 17
+  },
+  {
+    id: 33,
+    name: 'The Ordinary Niacinamide Serum - 30ml',
+    price: 12,
+    originalPrice: 15,
+    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop',
+    rating: 4.4,
+    reviews: 456,
+    category: 'Skincare',
+    badge: 'Bestseller',
+    discount: 20
+  },
+  {
+    id: 34,
+    name: 'Dyson Airwrap Complete Styler',
+    price: 599,
+    originalPrice: 699,
+    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=400&fit=crop',
+    rating: 4.9,
+    reviews: 123,
+    category: 'Hair Tools',
+    badge: 'Revolutionary',
+    discount: 14
   }
 ]
 
@@ -204,45 +396,45 @@ const cosmeticsProducts = [
 const cosmeticsCategories = [
   {
     name: 'Perfumes',
-    icon: '🌸',
     count: 185,
     color: 'bg-pink-500',
     image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=300&fit=crop'
   },
   {
     name: 'Makeup',
-    icon: '💄',
     count: 156,
     color: 'bg-purple-500',
     image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=300&fit=crop'
   },
   {
     name: 'Skincare',
-    icon: '✨',
     count: 123,
     color: 'bg-green-500',
     image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=300&fit=crop'
   },
   {
     name: 'Haircare',
-    icon: '💇',
     count: 98,
     color: 'bg-blue-500',
     image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400&h=300&fit=crop'
   },
   {
     name: 'Luxury',
-    icon: '💎',
     count: 67,
     color: 'bg-yellow-500',
     image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop'
   },
   {
     name: 'Sets',
-    icon: '🎁',
     count: 89,
     color: 'bg-red-500',
     image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop'
+  },
+  {
+    name: 'Men\'s Grooming',
+    count: 95,
+    color: 'bg-gray-500',
+    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/c9/71/1e/1735226743/philips-s324212-mens-shaver-rotation-shaver-trimmer-black-gold-acn-300060460-0.webp'
   }
 ]
 
@@ -374,8 +566,9 @@ export default function CosmeticsPage() {
         onSearchChange={setSearchQuery}
       />
 
-      {/* Hero Slider */}
-      <HeroSlider slides={cosmeticsSlides} />
+  {/* Hero Slider */}
+  <HeroSlider slides={cosmeticsSlides} />
+  <div id="beauty" />
 
       {/* Categories Section */}
       <CategoriesSection

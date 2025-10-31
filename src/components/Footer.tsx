@@ -42,27 +42,17 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Main Navigation Links */}
           <div>
-            <h3 className="text-base font-semibold mb-3">Quick Links</h3>
+            <h3 className="text-base font-semibold mb-3">Navigation</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Contact</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Blog</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Careers</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Press</a></li>
-            </ul>
-          </div>
-
-          {/* Customer Service */}
-          <div>
-            <h3 className="text-base font-semibold mb-3">Customer Service</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Help Center</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Shipping Info</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Returns</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Size Guide</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">Track Order</a></li>
+              <li><a href="/" className="text-gray-400 hover:text-white transition-colors text-sm">Home</a></li>
+              <li><a href="/products" className="text-gray-400 hover:text-white transition-colors text-sm">Products</a></li>
+              <li><a href="/clothing" className="text-gray-400 hover:text-white transition-colors text-sm">Clothing</a></li>
+              <li><a href="/cosmetics" className="text-gray-400 hover:text-white transition-colors text-sm">Cosmetics</a></li>
+              <li><a href="/sport" className="text-gray-400 hover:text-white transition-colors text-sm">Sport</a></li>
+              <li><a href="/house" className="text-gray-400 hover:text-white transition-colors text-sm">House</a></li>
+              <li><a href="/teknologji" className="text-gray-400 hover:text-white transition-colors text-sm">Tech</a></li>
             </ul>
           </div>
 

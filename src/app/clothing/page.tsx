@@ -2,6 +2,18 @@
 
 import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
+const clothingCategories = [
+  { name: 'Tracksuits', image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop', count: 12, color: 'bg-blue-500' },
+  { name: 'Caps', image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop', count: 8, color: 'bg-yellow-500' },
+  { name: 'T-Shirts', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop', count: 15, color: 'bg-green-500' },
+  { name: 'Shorts', image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop', count: 7, color: 'bg-red-500' },
+  { name: 'Hoodies', image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&h=400&fit=crop', count: 10, color: 'bg-purple-500' },
+  { name: 'Pants', image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop', count: 9, color: 'bg-pink-500' },
+  { name: 'Shoes', image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop', count: 14, color: 'bg-indigo-500' },
+  { name: 'Jeans', image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop', count: 6, color: 'bg-gray-500' },
+  { name: 'Jackets', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&h=400&fit=crop', count: 5, color: 'bg-orange-500' },
+  { name: 'Shirts', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop', count: 11, color: 'bg-teal-500' }
+];
 import ProductCard from '@/components/ProductCard'
 import CartSidebar from '@/components/CartSidebar'
 import HeroSlider from '@/components/HeroSlider'
@@ -35,7 +47,7 @@ const clothingProducts = [
     name: 'Adidas Training Tracksuit - Blue Star',
     price: 89,
     originalPrice: 109,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/15/18/6e/1730298228/trenerka-per-meshkuj-adidas-te-kalterta-yll-200004360-0.webp',
+    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
     rating: 4.6,
     reviews: 89,
     category: 'Tracksuits',
@@ -47,11 +59,11 @@ const clothingProducts = [
     name: 'Nike Baseball Cap - White Star',
     price: 35,
     originalPrice: 45,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/3d/f2/15/1721824328/kapele-baseball-nike-e-bardhe-yll-200003423-0.webp',
-    rating: 4.8,
+    image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop',
+    rating: 4.3,
     reviews: 156,
     category: 'Caps',
-    badge: 'Best Seller',
+    badge: 'Trending',
     discount: 22
   },
   {
@@ -59,7 +71,7 @@ const clothingProducts = [
     name: 'Calvin Klein Jeans T-Shirt - Black Star',
     price: 45,
     originalPrice: 59,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/de/84/g0/1742569750/atlete-per-meshkuj-calvin-klein-jeans-te-zeza-yll-200007694-0.webp',
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
     rating: 4.7,
     reviews: 203,
     category: 'T-Shirts',
@@ -71,7 +83,7 @@ const clothingProducts = [
     name: 'Tommy Hilfiger T-Shirt - Black Star',
     price: 52,
     originalPrice: 69,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/18/5e/c8/1754986411/atlete-per-meshkuj-tommy-hilfiger-te-zeza-yll-200009280-0.webp',
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
     rating: 4.5,
     reviews: 124,
     category: 'T-Shirts',
@@ -83,7 +95,7 @@ const clothingProducts = [
     name: 'Nike Training Shorts - Dark Grey',
     price: 42,
     originalPrice: 55,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/9d/14/2a/1749735791/fanelle-futbolli-per-meshkuj-adidas-tiro-24-e-kalter-yll-200008590-0.webp',
+    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
     rating: 4.4,
     reviews: 87,
     category: 'Shorts',
@@ -95,11 +107,11 @@ const clothingProducts = [
     name: 'Adidas Hoodie - Black Essential',
     price: 78,
     originalPrice: 95,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/15/18/6e/1730298228/trenerka-per-meshkuj-adidas-te-kalterta-yll-200004360-0.webp',
+    image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&h=400&fit=crop',
     rating: 4.6,
     reviews: 142,
     category: 'Hoodies',
-    badge: 'Trending',
+    badge: 'Essential',
     discount: 18
   },
   {
@@ -107,7 +119,7 @@ const clothingProducts = [
     name: 'Puma Track Pants - Navy Blue',
     price: 65,
     originalPrice: 85,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/b6/03/5a/1700621839/t-shirt-adidas-table-23-jersey-m-h44529-bsw-200018865-1.webp',
+    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
     rating: 4.3,
     reviews: 76,
     category: 'Pants',
@@ -118,58 +130,204 @@ const clothingProducts = [
     name: 'Nike Sneakers - Air Max White',
     price: 125,
     originalPrice: 149,
-    image: 'https://www.foleja.com/cdn-cgi/image/fit=scale-down,format=auto,height=400,width=400/media/ce/64/fd/1730372151/maice-per-meshkuj-adidas-real-madrid-e-bardhe-yll-200004371-0.webp',
+    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
     rating: 4.8,
     reviews: 298,
     category: 'Shoes',
-    badge: 'Hot Deal',
-    discount: 16
-  }
-]
-
-// Clothing categories
-const clothingCategories = [
-  {
-    name: 'T-Shirts',
-    icon: '👕',
-    count: 125,
-    color: 'bg-blue-500',
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop'
+    badge: '',
+    discount: 16,
   },
   {
-    name: 'Tracksuits',
-    icon: '🏃',
-    count: 89,
-    color: 'bg-green-500',
-    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=300&fit=crop'
+    id: 9,
+    name: 'Designer Jeans - Slim Fit Blue',
+    price: 89,
+    originalPrice: 119,
+    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 234,
+    category: 'Pants',
+    badge: 'Premium',
+    discount: 25
   },
   {
-    name: 'Caps',
-    icon: '🧢',
-    count: 67,
-    color: 'bg-yellow-500',
-    image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=300&fit=crop'
+    id: 10,
+    name: 'Casual Polo Shirt - Navy Blue',
+    price: 45,
+    originalPrice: 59,
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
+    rating: 4.4,
+    reviews: 189,
+    category: 'T-Shirts',
+    badge: 'Comfort',
+    discount: 24
   },
   {
-    name: 'Hoodies',
-    icon: '👘',
-    count: 78,
-    color: 'bg-purple-500',
-    image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=300&fit=crop'
+    id: 11,
+    name: 'Leather Jacket - Vintage Style',
+    price: 299,
+    originalPrice: 399,
+    image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 156,
+    category: 'Jackets',
+    badge: 'Vintage',
+    discount: 25
   },
   {
-    name: 'Sneakers',
-    icon: '👟',
-    count: 156,
-    color: 'bg-red-500',
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop'
+    id: 12,
+    name: 'Running Shorts - Quick Dry',
+    price: 35,
+    originalPrice: 45,
+    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
+    rating: 4.3,
+    reviews: 167,
+    category: 'Shorts',
+    badge: 'Quick Dry',
+    discount: 22
   },
   {
-    name: 'Shorts',
-    icon: '🩳',
-    count: 94,
-    color: 'bg-orange-500',
-    image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=300&fit=crop'
+    id: 13,
+    name: 'Baseball Cap - Logo Design',
+    price: 29,
+    originalPrice: 39,
+    image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop',
+    rating: 4.2,
+    reviews: 145,
+    category: 'Caps',
+    badge: 'Logo',
+    discount: 26
+  },
+  {
+    id: 15,
+    name: 'Dress Shirt - Formal White',
+    price: 65,
+    originalPrice: 85,
+    image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop',
+    rating: 4.5,
+    reviews: 198,
+    category: 'Shirts',
+    badge: 'Formal',
+    discount: 24
+  },
+  {
+    id: 16,
+    name: 'Sneakers - High-Top Canvas',
+    price: 75,
+    originalPrice: 95,
+    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
+    rating: 4.4,
+    reviews: 189,
+    category: 'Shoes',
+    badge: 'Classic',
+    discount: 21
+  },
+  {
+    id: 17,
+    name: 'Levi\'s 501 Original Jeans - Blue',
+    price: 89,
+    originalPrice: 109,
+    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 456,
+    category: 'Jeans',
+    badge: 'Original',
+    discount: 18
+  },
+  {
+    id: 18,
+    name: 'Nike Air Max 270 Sneakers',
+    price: 139,
+    originalPrice: 169,
+    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 567,
+    category: 'Shoes',
+    badge: 'Air Max',
+    discount: 18
+  },
+  {
+    id: 19,
+    name: 'Champion Hoodie - Logo Embroidered',
+    price: 59,
+    originalPrice: 79,
+    image: 'https://cdn.shopify.com/s/files/1/0665/9001/5680/files/CPM253FH62_S143-FRONT.jpg?v=1759936608&width=500',
+    rating: 4.5,
+    reviews: 234,
+    category: 'Hoodies',
+    badge: 'Champion',
+    discount: 25
+  },
+  {
+    id: 20,
+    name: 'Tommy Hilfiger Polo Shirt',
+    price: 69,
+    originalPrice: 89,
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 189,
+    category: 'Shirts',
+    badge: 'Polo',
+    discount: 22
+  },
+  {
+    id: 21,
+    name: 'Adidas Tracksuit - Complete Set',
+    price: 119,
+    originalPrice: 149,
+    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviews: 345,
+    category: 'Tracksuits',
+    badge: 'Complete',
+    discount: 20
+  },
+  {
+    id: 22,
+    name: 'Calvin Klein T-Shirt - Premium Cotton',
+    price: 39,
+    originalPrice: 49,
+    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
+    rating: 4.4,
+    reviews: 278,
+    category: 'T-Shirts',
+    badge: 'Premium',
+    discount: 20
+  },
+  {
+    id: 23,
+    name: 'Vans Old Skool Skateboard Shoes',
+    price: 79,
+    originalPrice: 99,
+    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 456,
+    category: 'Shoes',
+    badge: 'Skate',
+    discount: 20
+  },
+  {
+    id: 24,
+    name: 'North Face Fleece Hoodie - Glacier Blue',
+    price: 82,
+    originalPrice: 99,
+    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviews: 312,
+    category: 'Hoodies',
+    badge: 'Fleece',
+    discount: 17
+  },
+  {
+    id: 25,
+    name: 'Adidas Originals Hoodie - Black',
+    price: 65,
+    originalPrice: 85,
+    image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&h=400&fit=crop',
+    rating: 4.6,
+    reviews: 198,
+    category: 'Hoodies',
+    badge: 'Adidas',
+    discount: 24
   }
 ]
 
@@ -301,8 +459,9 @@ export default function ClothingPage() {
         onSearchChange={setSearchQuery}
       />
 
-      {/* Hero Slider */}
-      <HeroSlider slides={clothingSlides} />
+  {/* Hero Slider */}
+  <HeroSlider slides={clothingSlides} />
+  <div id="fashion" />
 
       {/* Categories Section */}
       <CategoriesSection
