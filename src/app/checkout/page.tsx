@@ -178,7 +178,7 @@ export default function CheckoutPage() {
                 value={form[field]}
                 onChange={handleFormChange}
                 type={field==='email' ? 'email' : 'text'}
-                className="w-full px-2 py-2 border border-neutral-300 rounded bg-white/70 shadow focus:ring-2 focus:ring-neutral-400 focus:outline-none text-sm font-medium"
+                className="w-full px-2 py-2 border border-neutral-300 rounded bg-white/70 shadow focus:ring-2 focus:ring-neutral-400 focus:outline-none text-sm font-medium text-black placeholder:text-black"
               />
             </div>
           ))}
