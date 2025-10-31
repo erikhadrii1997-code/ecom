@@ -255,7 +255,7 @@ export default function CheckoutConfirmPage() {
                       <div>
                         <h4 className="font-bold text-lg text-amber-800 mb-3">Kushtet dhe Rregullat</h4>
                         <p className="text-sm text-gray-700 leading-relaxed">
-                          Duke klikuar butonin "Finalizo blerjen", ju konfirmoni se keni lexuar, kuptuar dhe pranuar 
+                          Duke klikuar butonin &quot;Finalizo blerjen&quot;, ju konfirmoni se keni lexuar, kuptuar dhe pranuar 
                           <a href="#" className="text-blue-600 hover:text-blue-800 font-semibold mx-1 underline">politikën e privatësisë</a>
                           dhe 
                           <a href="#" className="text-blue-600 hover:text-blue-800 font-semibold mx-1 underline">kushtet tona të përdorimit</a>. 

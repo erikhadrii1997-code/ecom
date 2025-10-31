@@ -46,7 +46,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
               </div>
               
               <blockquote className="text-gray-700 mb-4 text-sm">
-                "{testimonial.text}"
+                &quot;{testimonial.text}&quot;
               </blockquote>
               
               <div className="flex items-center">

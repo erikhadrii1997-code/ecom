@@ -582,7 +582,7 @@ export default function Home() {
             </svg>
             <div>
               <p className="text-blue-700 font-medium">
-                Search results for "{searchQuery}"
+                Search results for &quot;{searchQuery}&quot;
               </p>
               <p className="text-blue-600 text-sm">
                 Found {filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''}
@@ -615,7 +615,7 @@ export default function Home() {
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <div>
               <h2 className="text-xl sm:text-2xl font-bold text-red-600 mb-1 sm:mb-2">Flash Deals</h2>
-              <p className="text-sm sm:text-base text-gray-600">Limited time offers - Don't miss out!</p>
+              <p className="text-sm sm:text-base text-gray-600">Limited time offers - Don&apos;t miss out!</p>
             </div>
             <div className="flex items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-lg">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -819,7 +819,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
             <h2 className="text-2xl md:text-3xl font-bold mb-2">Daily Deals</h2>
-            <p className="text-blue-100">Today's best offers - Limited time only!</p>
+            <p className="text-blue-100">Today&apos;s best offers - Limited time only!</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

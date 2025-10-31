@@ -164,7 +164,7 @@ export default function CheckoutPage() {
       {/* Search Results */}
       {showResults && (
         <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-2">Search results for "{searchQuery}"</h2>
+          <h2 className="text-lg font-semibold mb-2">Search results for &quot;{searchQuery}&quot;</h2>
           {searchFilteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {searchFilteredProducts.map((product, idx) => (
