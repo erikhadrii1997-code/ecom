@@ -670,26 +670,25 @@ export default function Home() {
               { name: "Books", image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=400&fit=crop", count: 290, price: "From $8" }
             ].map((category, index) => (
               <div key={index} className="group cursor-pointer">
-                <div className="bg-blue-50 rounded-xl p-2 sm:p-3 text-center border border-blue-200 hover:border-blue-400 hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col items-center justify-between min-h-64 sm:min-h-72 md:min-h-80 h-auto">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="bg-blue-200 rounded-xl p-4 sm:p-6 text-center border border-blue-300 hover:border-blue-400 hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col items-center justify-between min-h-64 sm:min-h-72 md:min-h-80 h-auto">
                   <div className="relative z-10 flex flex-col items-center justify-between h-full">
-                    <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden mx-auto mb-2 group-hover:scale-105 transition-transform duration-300 shadow-xl border-3 border-white">
+                    <div className="w-52 h-52 sm:w-60 sm:h-60 rounded-full overflow-hidden mx-auto mb-2 group-hover:scale-105 transition-transform duration-300 shadow-xl border-4 border-white bg-blue-100 flex items-center justify-center">
                       <img 
                         src={category.image} 
                         alt={category.name}
-                        className="w-full h-full object-cover rounded-xl"
+                        className="w-full h-full object-cover rounded-full"
                       />
                     </div>
-                    <h3 className="font-bold text-gray-900 mb-1 text-xs sm:text-sm group-hover:text-blue-600 transition-colors duration-200">
+                    <h3 className="font-bold text-gray-900 mb-1 text-base sm:text-lg group-hover:text-blue-700 transition-colors duration-200">
                       {category.name}
                     </h3>
-                    <p className="text-xs text-gray-600 mb-1 font-semibold">{category.count} products</p>
-                    <p className="text-xs font-bold text-green-600 mb-1">{category.price}</p>
+                    <p className="text-sm text-gray-700 mb-1 font-semibold">{category.count} products</p>
+                    <p className="text-sm font-bold text-green-700 mb-1">{category.price}</p>
                     <button 
                       onClick={() => {
                         window.location.href = `/products?category=${encodeURIComponent(category.name)}`;
                       }}
-                      className="w-full bg-blue-600 text-white py-1 px-2 rounded-lg hover:bg-blue-700 transition-all duration-200 font-bold text-xs shadow-lg hover:shadow-xl transform hover:-translate-y-1 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      className="w-full bg-blue-600 text-white py-2 px-3 rounded-full hover:bg-blue-700 transition-all duration-200 font-bold text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-1 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
                     >
                       Browse Category
                     </button>
